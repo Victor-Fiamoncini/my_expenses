@@ -1,0 +1,8 @@
+<header>
+  <h1 class="title">
+    My Expenses
+    <% if content_for(:title) %>
+      - <%= yield :title %>
+    <% end %>
+  </h1>
+</header>
