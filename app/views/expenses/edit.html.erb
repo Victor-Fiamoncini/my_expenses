@@ -1,3 +1,7 @@
+<% content_for :title do %>
+<%= @expense %>
+<% end %>
+
 <h1>Editing Expense</h1>
 
 <%= render 'form', expense: @expense %>

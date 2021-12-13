@@ -1,12 +1,12 @@
 class ExpensesController < ApplicationController
   before_action :set_expense, only: %i[ show edit update destroy ]
 
-  # GET /expenses or /expenses.json
+  # GET /expenses
   def index
     @expenses = Expense.all
   end
 
-  # GET /expenses/1 or /expenses/1.json
+  # GET /expenses/1
   def show
   end
 
@@ -19,7 +19,7 @@ class ExpensesController < ApplicationController
   def edit
   end
 
-  # POST /expenses or /expenses.json
+  # POST /expenses
   def create
     @expense = Expense.new(expense_params)
 
@@ -34,7 +34,7 @@ class ExpensesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /expenses/1 or /expenses/1.json
+  # PATCH/PUT /expenses/1
   def update
     respond_to do |format|
       if @expense.update(expense_params)
@@ -47,7 +47,7 @@ class ExpensesController < ApplicationController
     end
   end
 
-  # DELETE /expenses/1 or /expenses/1.json
+  # DELETE /expenses/1
   def destroy
     @expense.destroy
     respond_to do |format|
@@ -57,12 +57,10 @@ class ExpensesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_expense
       @expense = Expense.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def expense_params
       params.require(:expense).permit(:name, :value)
     end

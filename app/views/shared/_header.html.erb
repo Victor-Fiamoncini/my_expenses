@@ -1,8 +1,10 @@
-<header>
-  <h1 class="title">
-    My Expenses
-    <% if content_for(:title) %>
-      - <%= yield :title %>
+<header class="p-4 bg-info text-white text-center">
+  <h1 class="fw-bold">
+    <span>My Expenses</span>
+    <% if content_for :title %>
+      <span>
+        - <%= yield :title %>
+      </span>
     <% end %>
   </h1>
 </header>
