@@ -14,15 +14,11 @@
 
     <div class="container pt-4">
       <% if notice.present? %>
-        <p class="alert alert-success">
-          <%= notice %>
-        </p>
+        <%= render AlertComponent.new type: 'success', message: notice %>
       <% end %>
 
       <% if alert.present? %>
-        <p class="alert alert-danger">
-          <%= alert %>
-        </p>
+        <%= render AlertComponent.new type: 'danger', message: alert %>
       <% end %>
 
       <%= yield %>

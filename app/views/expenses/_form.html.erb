@@ -1,10 +1,7 @@
 <%= form_with(model: expense) do |form| %>
   <% if expense.errors.any? %>
     <% expense.errors.each do |error| %>
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <%= error.full_message %>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
+      <%= render AlertComponent.new type: 'danger', message: error.full_message %>
     <% end %>
   <% end %>
   <div class="mb-2">
