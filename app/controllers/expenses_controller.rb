@@ -1,13 +1,9 @@
 class ExpensesController < ApplicationController
-  before_action :set_expense, only: %i[ show edit update destroy ]
+  before_action :set_expense, only: %i[ edit update destroy ]
 
   # GET /expenses
   def index
     @expenses = Expense.all
-  end
-
-  # GET /expenses/1
-  def show
   end
 
   # GET /expenses/new
@@ -25,11 +21,11 @@ class ExpensesController < ApplicationController
 
     respond_to do |format|
       if @expense.save
-        format.html { redirect_to @expense, notice: "Expense was successfully created." }
-        format.json { render :show, status: :created, location: @expense }
+        flash[:notice] = "Expense was successfully created."
+
+        format.html { redirect_to expenses_url }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @expense.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -38,11 +34,11 @@ class ExpensesController < ApplicationController
   def update
     respond_to do |format|
       if @expense.update(expense_params)
-        format.html { redirect_to @expense, notice: "Expense was successfully updated." }
-        format.json { render :show, status: :ok, location: @expense }
+        flash[:notice] = "Expense was successfully updated."
+
+        format.html { redirect_to action: :edit }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @expense.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -51,8 +47,9 @@ class ExpensesController < ApplicationController
   def destroy
     @expense.destroy
     respond_to do |format|
-      format.html { redirect_to expenses_url, notice: "Expense was successfully destroyed." }
-      format.json { head :no_content }
+      flash[:notice] = "Expense was successfully destroyed."
+
+      format.html { redirect_to expenses_url }
     end
   end
 

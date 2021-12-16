@@ -1,4 +1,6 @@
-<h1>New Expense</h1>
+<% content_for :title do %>
+  New
+<% end %>
 
 <%= render 'form', expense: @expense %>
 
