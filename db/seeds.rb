@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+15.times do |i|
+  Expense.create!(name: "Expense ##{i}", value: Random.rand(10...300))
+end
