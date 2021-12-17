@@ -3,7 +3,7 @@ class ExpensesController < ApplicationController
 
   # GET /expenses
   def index
-    @expenses = Expense.all
+    @expenses = Expense.all.paginate(page: params[:page], per_page: 5)
   end
 
   # GET /expenses/new

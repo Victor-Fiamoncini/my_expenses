@@ -13,6 +13,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 gem "view_component"
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'will_paginate', '~> 3.3'
+gem 'will_paginate-bootstrap-style'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
