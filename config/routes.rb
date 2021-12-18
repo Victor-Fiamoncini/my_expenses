@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'expenses#index'
+  get 'signup', to: 'users#new'
+
   resources :expenses, except: [:show]
 end
