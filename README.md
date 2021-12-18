@@ -1,24 +1,16 @@
-# README
+# My expenses 💸
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Fullstack expense tracker app
 
-Things you may want to cover:
+## How to install and run (development build) 🛠
 
-* Ruby version
+```bash
+docker-compose up -d # init postgres container
+bundler install
+rails server
+```
 
-* System dependencies
+----------
+Released in 2021. This project is under the MIT license.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+By [Victor B. Fiamoncini](https://github.com/Victor-Fiamoncini) 🚀
