@@ -1,8 +1,8 @@
-<% content_for :title do %>
-  New
+<% content_for :header do %>
+  <%= render HeaderComponent.new page_title: 'New' %>
 <% end %>
 
-<%= form_with model: @expense url: expenses_path do |form| %>
+<%= form_with model: @expense, url: expenses_path do |form| %>
   <% if @expense.errors.any? %>
     <% @expense.errors.each do |error| %>
       <%= render AlertComponent.new type: 'danger', message: error.full_message %>

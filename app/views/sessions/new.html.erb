@@ -1,5 +1,5 @@
-<% content_for :title do %>
-  Login
+<% content_for :header do %>
+  <%= render HeaderComponent.new page_title: 'Login' %>
 <% end %>
 
 <%= form_with model: @user, url: sessions_path do |form| %>
@@ -17,6 +17,6 @@
     <%= form.password_field :password, class: 'form-control' %>
   </div>
   <div>
-    <%= form.submit 'Login' class: 'btn btn-success' %>
+    <%= form.submit 'Login', class: 'btn btn-success' %>
   </div>
 <% end %>

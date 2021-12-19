@@ -1,5 +1,5 @@
-<% content_for :title do %>
-  <%= @expense.name %>
+<% content_for :header do %>
+  <%= render HeaderComponent.new page_title: @expense.name %>
 <% end %>
 
 <%= form_with model: @expense, url: expense_path do |form| %>

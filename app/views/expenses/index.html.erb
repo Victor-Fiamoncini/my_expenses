@@ -1,5 +1,5 @@
-<% content_for :title do %>
-  Home
+<% content_for :header do %>
+  <%= render HeaderComponent.new page_title: 'Home' %>
 <% end %>
 
 <main id="expenses-index">

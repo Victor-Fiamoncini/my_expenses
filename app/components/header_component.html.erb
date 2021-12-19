@@ -1,9 +1,9 @@
 <header class="p-4 bg-primary text-white text-center">
   <h1 class="fw-bold">
-    <span>My Expenses</span>
-    <% if content_for :title %>
+    My Expenses
+    <% if @page_title.present? %>
       <span>
-        - <%= yield :title %>
+        - <%= @page_title %>
       </span>
     <% end %>
   </h1>
