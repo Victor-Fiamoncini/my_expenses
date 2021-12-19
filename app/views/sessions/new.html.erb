@@ -1,5 +1,5 @@
 <% content_for :header do %>
-  <%= render HeaderComponent.new page_title: 'Login' %>
+  <%= render HeaderComponent.new page_title: 'Login', user: current_user %>
 <% end %>
 
 <%= form_with model: @user, url: sessions_path do |form| %>

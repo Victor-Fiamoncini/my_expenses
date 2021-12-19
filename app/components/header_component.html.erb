@@ -6,5 +6,10 @@
         - <%= @page_title %>
       </span>
     <% end %>
+    <% if @user.present? %>
+      <span>
+        - <%= @user.name %>
+      </span>
+    <% end %>
   </h1>
 </header>
