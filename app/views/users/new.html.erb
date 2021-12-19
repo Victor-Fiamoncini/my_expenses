@@ -1,12 +1,20 @@
-<%= form_with(model: user) do |form| %>
-  <% if user.errors.any? %>
-    <% user.errors.each do |error| %>
+<% content_for :title do %>
+  Register
+<% end %>
+
+<%= form_with(model: @user) do |form| %>
+  <% if @user.errors.any? %>
+    <% @user.errors.each do |error| %>
       <%= render AlertComponent.new type: 'danger', message: error.full_message %>
     <% end %>
   <% end %>
   <div class="mb-2">
     <%= form.label :name, class: 'form-label' %>
     <%= form.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="mb-2">
+    <%= form.label :email, class: 'form-label' %>
+    <%= form.email_field :email, class: 'form-control' %>
   </div>
   <div class="mb-4">
     <%= form.label :password, class: 'form-label' %>
