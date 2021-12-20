@@ -4,9 +4,7 @@
 
 <%= form_with model: @expense, url: expenses_path do |form| %>
   <% if @expense.errors.any? %>
-    <% @expense.errors.each do |error| %>
-      <%= render AlertComponent.new type: 'danger', message: error.full_message %>
-    <% end %>
+    <%= render AlertComponent.new type: 'danger', message: @expense.errors.full_messages.first %>
   <% end %>
   <div class="mb-2">
     <%= form.label :name, class: 'form-label' %>

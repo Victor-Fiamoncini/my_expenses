@@ -1,12 +1,10 @@
 <% content_for :header do %>
-  <%= render HeaderComponent.new page_title: 'Login', user: current_user %>
+  <%= render HeaderComponent.new page_title: 'Login' %>
 <% end %>
 
-<%= form_with model: @user, url: sessions_path do |form| %>
+<%= form_for @user, url: sessions_path, method: :post do |form| %>
   <% if @user.errors.any? %>
-    <% @user.errors.each do |error| %>
-      <%= render AlertComponent.new type: 'danger', message: error.full_message %>
-    <% end %>
+    <%= render AlertComponent.new type: 'danger', message: @user.errors.full_messages.first %>
   <% end %>
   <div class="mb-2">
     <%= form.label :email, class: 'form-label' %>
@@ -16,7 +14,11 @@
     <%= form.label :password, class: 'form-label' %>
     <%= form.password_field :password, class: 'form-control' %>
   </div>
-  <div>
+  <div class="d-flex justify-content-between align-items-center">
     <%= form.submit 'Login', class: 'btn btn-success' %>
+    <span>
+      Not registered yet?
+      <%= link_to "Sign up here", new_user_path %>
+    </span>
   </div>
 <% end %>

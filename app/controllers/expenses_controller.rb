@@ -45,6 +45,7 @@ class ExpensesController < ApplicationController
   # DELETE /expenses/1
   def destroy
     @expense.destroy
+
     respond_to do |format|
       flash[:notice] = 'Expense was successfully destroyed.'
 
