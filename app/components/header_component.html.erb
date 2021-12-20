@@ -11,5 +11,8 @@
         - <%= @user.name %>
       </span>
     <% end %>
+    <% if @logged_in.present? && @logged_in %>
+      <%= button_to "Logout", session_path(:user), method: :delete %>
+    <% end %>
   </h1>
 </header>

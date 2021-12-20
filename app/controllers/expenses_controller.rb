@@ -1,4 +1,5 @@
 class ExpensesController < ApplicationController
+  before_action :authorized
   before_action :set_expense_by_id, only: %i[edit update destroy]
 
   # GET /expenses
