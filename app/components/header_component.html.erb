@@ -1,4 +1,4 @@
-<header class="p-2 bg-primary text-white text-center">
+<header class="position-relative d-flex justify-content-center align-items-center p-2 bg-primary text-white">
   <h1 class="fw-bold">
     My Expenses
     <% if @page_title.present? %>
@@ -6,13 +6,15 @@
         - <%= @page_title %>
       </span>
     <% end %>
+  </h1>
+  <nav class="position-absolute translate-middle top-50 end-0 d-flex">
     <% if @user.present? %>
-      <span>
-        - <%= @user.name %>
+      <span class="text-white fw-bold fs-5">
+        <%= @user.name %>
       </span>
     <% end %>
     <% if @logged_in.present? && @logged_in %>
-      <%= button_to "Logout", session_path(:user), method: :delete %>
+      <%= button_to " - Logout", session_path(:user), method: :delete, class: 'border-0 text-white bg-transparent fw-bold fs-5' %>
     <% end %>
-  </h1>
+  </nav>
 </header>

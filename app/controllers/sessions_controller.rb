@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :authorized, only: %i[destroy]
   before_action :set_user_by_email, only: %i[create]
 
   # GET / or /sessions/new

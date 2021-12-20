@@ -1,5 +1,5 @@
 <% content_for :header do %>
-  <%= render HeaderComponent.new page_title: 'Home', logged_in: logged_in? %>
+  <%= render HeaderComponent.new page_title: 'Home', logged_in: logged_in?, user: current_user %>
 <% end %>
 
 <main id="expenses-index">
