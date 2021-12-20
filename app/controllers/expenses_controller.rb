@@ -1,5 +1,5 @@
 class ExpensesController < ApplicationController
-  before_action :set_expense, only: %i[edit update destroy]
+  before_action :set_expense_by_id, only: %i[edit update destroy]
 
   # GET /expenses
   def index
@@ -55,7 +55,7 @@ class ExpensesController < ApplicationController
 
   private
 
-  def set_expense
+  def set_expense_by_id
     @expense = Expense.find(params[:id])
   end
 

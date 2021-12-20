@@ -9,7 +9,8 @@ class UsersController < ApplicationController
   # POST /users
   def create
     respond_to do |format|
-      if @user.save
+      if @user.valid?
+        @user.save
         session[:user_id] = @user.id
         flash[:notice] = 'User was successfully created.'
 
