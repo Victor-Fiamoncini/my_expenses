@@ -17,7 +17,7 @@ class ExpensesController < ApplicationController
 
   # POST /expenses
   def create
-    @expense = Expense.new(expense_params)
+    @expense = Expense.new(expense_params.merge!(user_id: current_user.id))
 
     respond_to do |format|
       if @expense.save
