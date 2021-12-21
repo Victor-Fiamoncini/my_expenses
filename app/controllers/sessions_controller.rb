@@ -25,6 +25,7 @@ class SessionsController < ApplicationController
   # DELETE /sessions/1
   def destroy
     respond_to do |format|
+      @user = nil
       session[:user_id] = nil
 
       format.html { redirect_to root_path }
@@ -33,11 +34,13 @@ class SessionsController < ApplicationController
 
   private
 
-  def set_user_by_email
-    @user = User.select(:id, :password_digest).find_by(email: user_params[:email])
-  end
+    def set_user_by_email
+      @user = User
+              .select(:id, :password_digest)
+              .find_by(email: user_params[:email])
+    end
 
-  def user_params
-    params.require(:user).permit(:name, :email, :password)
-  end
+    def user_params
+      params.require(:user).permit(:name, :email, :password)
+    end
 end
