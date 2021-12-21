@@ -4,7 +4,7 @@ class ExpensesController < ApplicationController
 
   # GET /expenses
   def index
-    @expenses = Expense.all.paginate(page: params[:page], per_page: 5)
+    @expenses = current_user.expenses.paginate(page: params[:page], per_page: 5)
   end
 
   # GET /expenses/new
@@ -17,7 +17,7 @@ class ExpensesController < ApplicationController
 
   # POST /expenses
   def create
-    @expense = Expense.new(expense_params.merge!(user_id: current_user.id))
+    @expense = Expense.new(expense_params_with_user)
 
     respond_to do |format|
       if @expense.save
@@ -58,6 +58,10 @@ class ExpensesController < ApplicationController
 
   def set_expense_by_id
     @expense = Expense.find(params[:id])
+  end
+
+  def expense_params_with_user
+    expense_params.merge!(user_id: current_user.id)
   end
 
   def expense_params
