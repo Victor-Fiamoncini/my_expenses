@@ -2,23 +2,25 @@
   <%= render HeaderComponent.new page_title: 'Login' %>
 <% end %>
 
-<%= form_for @user, url: sessions_path, method: :post do |form| %>
-  <% if @user.errors.any? %>
-    <%= render AlertComponent.new type: 'danger', message: @user.errors.full_messages.first %>
+<main id="sessions-new">
+  <%= form_for @user, url: sessions_path, method: :post do |form| %>
+    <% if @user.errors.any? %>
+      <%= render AlertComponent.new type: 'danger', message: @user.errors.full_messages.first %>
+    <% end %>
+    <div class="mb-2">
+      <%= form.label :email, class: 'form-label' %>
+      <%= form.email_field :email, class: 'form-control' %>
+    </div>
+    <div class="mb-4">
+      <%= form.label :password, class: 'form-label' %>
+      <%= form.password_field :password, class: 'form-control' %>
+    </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <%= form.submit 'Login', class: 'btn btn-success' %>
+      <span>
+        Not registered yet?
+        <%= link_to "Sign up here", new_user_path %>
+      </span>
+    </div>
   <% end %>
-  <div class="mb-2">
-    <%= form.label :email, class: 'form-label' %>
-    <%= form.email_field :email, class: 'form-control' %>
-  </div>
-  <div class="mb-4">
-    <%= form.label :password, class: 'form-label' %>
-    <%= form.password_field :password, class: 'form-control' %>
-  </div>
-  <div class="d-flex justify-content-between align-items-center">
-    <%= form.submit 'Login', class: 'btn btn-success' %>
-    <span>
-      Not registered yet?
-      <%= link_to "Sign up here", new_user_path %>
-    </span>
-  </div>
-<% end %>
+</main>

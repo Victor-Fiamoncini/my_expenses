@@ -4,6 +4,8 @@ class ExpensesController < ApplicationController
 
   # GET /expenses
   def index
+    @total_spent = current_user.expenses.sum(:value)
+    @average = (@total_spent / current_user.expenses.count).round(2)
     @expenses = current_user.expenses.paginate(page: params[:page], per_page: 5)
   end
 
@@ -56,15 +58,15 @@ class ExpensesController < ApplicationController
 
   private
 
-  def set_expense_by_id
-    @expense = Expense.find(params[:id])
-  end
+    def set_expense_by_id
+      @expense = Expense.find(params[:id])
+    end
 
-  def expense_params_with_user
-    expense_params.merge!(user_id: current_user.id)
-  end
+    def expense_params_with_user
+      expense_params.merge!(user_id: current_user.id)
+    end
 
-  def expense_params
-    params.require(:expense).permit(:name, :value)
-  end
+    def expense_params
+      params.require(:expense).permit(:name, :value)
+    end
 end
