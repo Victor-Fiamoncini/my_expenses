@@ -1,26 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MyExpreses</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <title>My Expreses</title>
   </head>
   <body>
     <%= yield :header %>
-
     <div class="container pt-4">
       <% if notice.present? %>
         <%= render AlertComponent.new type: 'success', message: notice %>
       <% end %>
-
       <% if alert.present? %>
         <%= render AlertComponent.new type: 'danger', message: alert %>
       <% end %>
-
       <%= yield %>
     </div>
   </body>

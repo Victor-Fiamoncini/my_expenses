@@ -1,5 +1,5 @@
-<header class="position-relative d-flex justify-content-center align-items-center p-2 bg-primary text-white">
-  <h1 class="fw-bold">
+<header class="position-relative d-flex justify-content-center align-items-center py-2 bg-primary text-white">
+  <h1 class="fw-bold fs-2">
     My Expenses
     <% if @page_title.present? %>
       <span>
@@ -8,7 +8,7 @@
     <% end %>
   </h1>
   <nav class="position-absolute translate-middle top-50 end-0 d-flex">
-    <% if @user.present? %>
+    <% if @user.present? && @user.name %>
       <span class="text-white fw-bold fs-5">
         <%= @user.name %>
       </span>
