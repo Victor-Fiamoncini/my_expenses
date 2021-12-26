@@ -8,43 +8,44 @@ AllCops:
   SuggestExtensions: false
 
   Include:
-    - 'config.ru'
-    - 'Gemfile'
-    - 'Guardfile'
-    - 'Rakefile'
-    - 'app/**/*.rb'
-    - 'config/**/*.rb'
-    - 'lib/**/*.rb'
-    - 'spec/**/*.rb'
-    - 'db/seeds.rb'
+    - "config.ru"
+    - "Gemfile"
+    - "Guardfile"
+    - "Rakefile"
+    - "app/**/*.rb"
+    - "config/**/*.rb"
+    - "lib/**/*.rb"
+    - "spec/**/*.rb"
+    - "db/seeds.rb"
 
   Exclude:
-    - 'bin/*'
-    - 'db/schema.rb'
-    - 'db/migrate/*'
-    - 'log/**/*'
-    - 'node_modules/**/*'
-    - 'public/**/*'
-    - 'script/**/*'
-    - 'vendor/**/*'
-    - 'tmp/**/*'
-    - '.git/**/*'
-    - 'app/views/**/*'
+    - "bin/*"
+    - "db/schema.rb"
+    - "db/migrate/*"
+    - "log/**/*"
+    - "node_modules/**/*"
+    - "public/**/*"
+    - "script/**/*"
+    - "vendor/**/*"
+    - "tmp/**/*"
+    - ".git/**/*"
+    - "app/views/**/*"
 
 Layout/IndentationConsistency:
-  EnforcedStyle: 'indented_internal_methods'
+  EnforcedStyle: "indented_internal_methods"
 
 Layout/LineLength:
   Max: 80
 
 Metrics/BlockLength:
   Exclude:
-    - 'Guardfile'
-    - 'config/environments/*'
+    - "Guardfile"
+    - "config/environments/*"
+  IgnoredMethods: ["describe", "context"]
 
 Metrics/ClassLength:
   Exclude:
-    - 'db/seeds.rb'
+    - "db/seeds.rb"
   Max: 150
 
 Metrics/ModuleLength:
@@ -52,9 +53,9 @@ Metrics/ModuleLength:
 
 Naming/FileName:
   Exclude:
-    - 'Gemfile'
-    - 'Guardfile'
-    - 'Rakefile'
+    - "Gemfile"
+    - "Guardfile"
+    - "Rakefile"
 
 Style/Documentation:
   Enabled: false

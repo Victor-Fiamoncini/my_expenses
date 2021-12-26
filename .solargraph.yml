@@ -1,17 +1,17 @@
 ---
 include:
-- "**/*.rb"
+  - "**/*.rb"
 exclude:
-- spec/**/*
-- test/**/*
-- vendor/**/*
-- ".bundle/**/*"
+  - spec/**/*
+  - test/**/*
+  - vendor/**/*
+  - ".bundle/**/*"
 require: []
 domains: []
 reporters:
-- rubocop
-- rubocop-rails
-- require_not_found
+  - rubocop
+  - rubocop-rails
+  - require_not_found
 formatter:
   rubocop:
     cops: safe

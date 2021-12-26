@@ -20,6 +20,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'rubocop'
   gem 'rubocop-rails'
+  gem 'solargraph'
 end
 
 group :development do
