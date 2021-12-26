@@ -10,6 +10,8 @@ RSpec.describe User, type: :model do
   end
 
   describe 'Associations' do
+    it { should have_many(:expenses).without_validating_presence }
+
     it 'should have many expenses' do
       should respond_to(:expenses)
     end

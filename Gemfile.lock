@@ -215,6 +215,8 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
+    shoulda-matchers (5.1.0)
+      activesupport (>= 5.2.0)
     solargraph (0.44.2)
       backport (~> 1.2)
       benchmark
@@ -295,6 +297,7 @@ DEPENDENCIES
   rubocop-rails
   sass-rails (>= 6)
   selenium-webdriver
+  shoulda-matchers
   solargraph
   spring
   turbolinks (~> 5)
