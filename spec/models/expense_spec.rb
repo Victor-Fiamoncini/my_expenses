@@ -3,16 +3,16 @@ require 'rails_helper'
 RSpec.describe Expense, type: :model do
   let(:user) do
     User.create(
-      name: 'any_name',
-      email: 'any_mail@mail.com',
-      password: 'any_password'
+      name: Faker::Name.name,
+      email: Faker::Internet.email,
+      password: Faker::Alphanumeric.alphanumeric(number: 10)
     )
   end
 
   subject do
     described_class.new(
-      name: 'any_name',
-      value: 999,
+      name: Faker::Name.name,
+      value: Faker::Number.number(digits: 3),
       user_id: user.id
     )
   end
