@@ -1,0 +1,4 @@
+example_id                              | status | run_time     |
+--------------------------------------- | ------ | ------------ |
+./spec/features/sessions_spec.rb[1:1:1] | passed | 2.49 seconds |
+./spec/features/sessions_spec.rb[1:1:2] | failed | 2.34 seconds |
