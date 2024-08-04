@@ -2,12 +2,18 @@
 
 Fullstack expense tracker app
 
+## Tools 🛠
+
+Nodejs 14.18.3
+Ruby 3.0.3
+Bundler 2.2.32
+
 ## How to install and run (development build) 🛠
 
 ```bash
-docker-compose up -d # init postgres container
-bundler install # install deps
-rails server # init dev server
+docker-compose up -d
+bundler install
+rails server
 ```
 
 ----------
