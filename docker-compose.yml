@@ -1,11 +1,38 @@
 version: "3.9"
 
 services:
-  db:
-    image: postgres
+  web:
+    container_name: web
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bin/setup && rails s -b 0.0.0.0"
     volumes:
-      - ./tmp/db:/var/lib/postgresql/data
+      - .:/my_expreses_app
+      - rubygems:/usr/local/bundle
     ports:
-      - "5432:5432"
+      - 3000:3000
+    networks:
+      - my_expreses
+    depends_on:
+      database:
+        condition: service_started
+
+  database:
+    container_name: database
+    image: postgres:15-alpine
+    volumes:
+      - database:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
     environment:
+      POSTGRES_DB: my_expreses_development
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
+    networks:
+      - my_expreses
+
+networks:
+  my_expreses:
+
+volumes:
+  database:
+  rubygems:
