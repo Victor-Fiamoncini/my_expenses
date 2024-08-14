@@ -1,20 +1,20 @@
-<header class="position-relative d-flex justify-content-center align-items-center py-2 bg-primary text-white">
-  <h1 class="fw-bold fs-2">
-    My Expenses
-    <% if @page_title.present? %>
-      <span>
+<header class="position-relative py-4 bg-primary text-white">
+  <div class="container d-flex justify-content-between align-items-center gap-4">
+    <h1 class="fw-bold fs-2 text-white m-0 text-wrap">
+      My Expenses
+      <% if @page_title.present? %>
         - <%= @page_title %>
-      </span>
-    <% end %>
-  </h1>
-  <nav class="position-absolute translate-middle top-50 end-0 d-flex">
-    <% if @user.present? && @user.name %>
-      <span class="text-white fw-bold fs-5">
-        <%= @user.name %>
-      </span>
-    <% end %>
-    <% if @logged_in.present? && @logged_in %>
-      <%= button_to " - Logout", session_path(:user), method: :delete, class: 'border-0 text-white bg-transparent fw-bold fs-5' %>
-    <% end %>
-  </nav>
+      <% end %>
+    </h1>
+    <nav class="d-flex gap-2 flex-wrap justify-content-center align-items-center">
+      <% if @user.present? && @user.name %>
+        <span class="text-white fw-bold fs-5 text-center">
+          <%= @user.name %>
+        </span>
+      <% end %>
+      <% if @logged_in.present? && @logged_in %>
+        <%= link_to "Logout", session_path(:user), method: :delete, class: 'text-white fw-bold fs-5' %>
+      <% end %>
+    </nav>
+  </div>
 </header>
