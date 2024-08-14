@@ -6,33 +6,46 @@ services:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bin/setup && rails s -b 0.0.0.0"
     volumes:
-      - .:/my_expreses_app
+      - .:/my_expenses_app
       - rubygems:/usr/local/bundle
     ports:
       - 3000:3000
     networks:
-      - my_expreses
+      - my_expenses
     depends_on:
-      database:
+      database_development:
         condition: service_started
 
-  database:
-    container_name: database
+  database_development:
+    container_name: database_development
     image: postgres:15-alpine
     volumes:
-      - database:/var/lib/postgresql/data
+      - database_development:/var/lib/postgresql/data
     ports:
       - 5432:5432
     environment:
-      POSTGRES_DB: my_expreses_development
+      POSTGRES_DB: my_expenses_development
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
     networks:
-      - my_expreses
+      - my_expenses
+
+  database_test:
+    container_name: database_test
+    image: postgres:15-alpine
+    volumes:
+      - database_test:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: my_expenses_test
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    networks:
+      - my_expenses
 
 networks:
-  my_expreses:
+  my_expenses:
 
 volumes:
-  database:
+  database_development:
+  database_test:
   rubygems:
