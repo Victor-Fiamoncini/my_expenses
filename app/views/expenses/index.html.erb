@@ -1,19 +1,18 @@
 <% content_for :header do %>
   <%= render HeaderComponent.new page_title: 'Home', logged_in: logged_in?, user: current_user %>
 <% end %>
-
 <main id="expenses-index">
-  <div class="d-flex justify-content-between align-items-center mb-4">
+  <div class="d-flex justify-content-between align-items-center gap-4 mb-4">
     <%= link_to "New Expense", new_expense_path, class: "btn btn-small btn-primary text-white" %>
-    <div class="d-flex align-items-center h-100">
+    <div class="d-flex align-items-center h-100 gap-2">
       <% if @total_spent > 0 %>
         <span class="text-primary fw-bold">
-          Total spent:
+          Total expenses:
           <%= number_to_currency_br @total_spent %>
         </span>
       <% end %>
       <% if @total_spent > 0 && @average > 0 %>
-        <span class="text-primary fw-bold mx-1">/</span>
+        <span class="text-primary fw-bold">|</span>
       <% end %>
       <% if @average > 0 %>
         <span class="text-primary fw-bold">
@@ -55,4 +54,3 @@
   <% end %>
   <%= will_paginate @expenses, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, list_classes: ["pagination", "justify-content-start"] %>
 </main>
-
