@@ -1,26 +1,25 @@
 <% content_for :header do %>
   <%= render HeaderComponent.new page_title: 'Register' %>
 <% end %>
-
 <main id="users-new">
   <%= form_for @user, url: users_path, method: :post do |form| %>
     <% if @user.errors.any? %>
       <%= render AlertComponent.new type: 'danger', message: @user.errors.full_messages.first %>
     <% end %>
-    <div class="mb-2">
+    <div class="mb-4">
       <%= form.label :name, class: 'form-label' %>
-      <%= form.text_field :name, class: 'form-control' %>
+      <%= form.text_field :name, class: 'form-control', placeholder: 'Your name' %>
     </div>
-    <div class="mb-2">
+    <div class="mb-4">
       <%= form.label :email, class: 'form-label' %>
-      <%= form.email_field :email, class: 'form-control' %>
+      <%= form.email_field :email, class: 'form-control', placeholder: 'Your best email' %>
     </div>
     <div class="mb-4">
       <%= form.label :password, class: 'form-label' %>
-      <%= form.password_field :password, class: 'form-control' %>
+      <%= form.password_field :password, class: 'form-control', placeholder: 'A strong password' %>
     </div>
-    <div class="d-flex justify-content-between align-items-center">
-      <%= form.submit 'Register', class: 'btn btn-success' %>
+    <div class="d-flex justify-content-between align-items-center gap-4">
+      <%= form.submit 'Register', class: 'btn btn-primary' %>
       <span>
         Already registered?
         <%= link_to "Sign in here", root_path %>
