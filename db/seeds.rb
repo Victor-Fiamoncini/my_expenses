@@ -6,6 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+user = User.create!(
+  name: 'John Doe',
+  email: 'john.doe@example.com',
+  password: 'password'
+)
+
 15.times do |i|
-  Expense.create!(name: "Expense ##{i}", value: Random.rand(10...300))
+  user.expenses.create!(name: "Expense ##{i + 1}", value: Random.rand(10...300))
 end
