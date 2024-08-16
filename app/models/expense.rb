@@ -10,6 +10,7 @@ class Expense < ApplicationRecord
 
   belongs_to :user
 
+  validates :category, presence: true
   validates :name, presence: true
   validates :value, numericality: { greater_than: 0 }, presence: true
 end
