@@ -14,6 +14,10 @@
       <%= form.label :value, class: 'form-label' %>
       <%= form.text_field :value, id: 'expense-value-input', class: 'form-control', placeholder: 'A numeric value' %>
     </div>
+    <div class="mb-4">
+      <%= form.label :category, class: 'form-label' %>
+      <%= form.select :category, category_options, { include_blank: false }, class: 'form-select' %>
+    </div>
     <div>
       <%= link_to 'Back', expenses_path, class: 'btn btn-secondary text-white' %>
       <%= form.submit 'Create expense', class: 'btn btn-primary' %>
