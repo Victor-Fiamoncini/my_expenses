@@ -48,8 +48,8 @@
       </tbody>
     </table>
   <% else %>
-    <div class="alert alert-warning">
-      There are no expenses registered so far
+    <div class="alert alert-light fs-4 text-center">
+      There are no expenses registered so far, click above to start registering
     </div>
   <% end %>
   <%= will_paginate @expenses, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, list_classes: ["pagination", "justify-content-start"] %>
