@@ -1,4 +1,13 @@
 class Expense < ApplicationRecord
+  enum category: %i[
+    bill
+    food
+    rent
+    subscription
+    transportation
+    utilities
+  ]
+
   belongs_to :user
 
   validates :name, presence: true
