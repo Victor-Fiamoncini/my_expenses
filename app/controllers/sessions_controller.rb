@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
 
         format.html { redirect_to expenses_path }
       else
-        flash[:alert] = 'Invalid credentials.'
+        flash[:alert] = 'Invalid credentials'
 
         format.html { redirect_to root_path }
       end
@@ -35,9 +35,8 @@ class SessionsController < ApplicationController
   private
 
     def set_user_by_email
-      @user = User
-              .select(:id, :password_digest)
-              .find_by(email: user_params[:email])
+      @user = User.select(:id, :password_digest)
+                  .find_by(email: user_params[:email])
     end
 
     def user_params

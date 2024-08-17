@@ -23,7 +23,7 @@ class ExpensesController < ApplicationController
 
     respond_to do |format|
       if @expense.save
-        flash[:notice] = 'Expense was successfully created.'
+        flash[:notice] = "Expense #{@expense.name} was successfully registered"
 
         format.html { redirect_to expenses_url }
       else
@@ -36,9 +36,9 @@ class ExpensesController < ApplicationController
   def update
     respond_to do |format|
       if @expense.update(expense_params)
-        flash[:notice] = 'Expense was successfully updated.'
+        flash[:notice] = "Expense #{@expense.name} was successfully updated"
 
-        format.html { redirect_to action: :edit }
+        format.html { redirect_to expenses_url }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -50,7 +50,7 @@ class ExpensesController < ApplicationController
     @expense.destroy
 
     respond_to do |format|
-      flash[:notice] = 'Expense was successfully destroyed.'
+      flash[:notice] = "Expense #{@expense.name} was successfully deleted"
 
       format.html { redirect_to expenses_url }
     end
@@ -59,7 +59,7 @@ class ExpensesController < ApplicationController
   private
 
     def set_expense_by_id
-      @expense = Expense.find(params[:id])
+      @expense = current_user.expenses.find(params[:id])
     end
 
     def expense_params_with_user

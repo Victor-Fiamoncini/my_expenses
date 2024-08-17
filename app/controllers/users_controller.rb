@@ -11,8 +11,9 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.valid?
         @user.save
+
         session[:user_id] = @user.id
-        flash[:notice] = 'User was successfully created.'
+        flash[:notice] = "Welcome #{@user.name} to your expenses dashboard"
 
         format.html { redirect_to expenses_path }
       else
