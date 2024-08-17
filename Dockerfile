@@ -14,3 +14,5 @@ COPY package.json /my_expenses_app/package.json
 COPY yarn.lock /my_expenses_app/yarn.lock
 
 COPY . /my_expenses_app
+
+CMD bash -c "rm -f tmp/pids/server.pid && bin/setup && rails s -b 0.0.0.0"

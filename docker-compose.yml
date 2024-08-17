@@ -4,7 +4,6 @@ services:
   web:
     container_name: web
     build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bin/setup && rails s -b 0.0.0.0"
     volumes:
       - .:/my_expenses_app
       - rubygems:/usr/local/bundle
@@ -14,6 +13,8 @@ services:
       - my_expenses
     depends_on:
       database_development:
+        condition: service_started
+      database_test:
         condition: service_started
 
   database_development:
