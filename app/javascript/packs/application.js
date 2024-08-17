@@ -1,9 +1,14 @@
 import Rails from '@rails/ujs'
 import Turbolinks from 'turbolinks'
 import * as ActiveStorage from '@rails/activestorage'
-import 'channels'
+
 import Cleave from 'cleave.js'
+import flatpickr from 'flatpickr'
+
 import 'bootstrap'
+import 'channels'
+import 'flatpickr/dist/flatpickr.min.css'
+import 'flatpickr/dist/themes/material_green.css'
 
 Rails.start()
 Turbolinks.start()
@@ -56,4 +61,12 @@ document.addEventListener('turbolinks:load', () => {
       input.value = convertFromMonetaryToNumeric(input.value)
     })
   }
+
+  flatpickr('input[type=date]', {
+    dateFormat: 'd/m/Y',
+    altInput: true,
+    altFormat: 'd/m/Y',
+    allowInput: true,
+    minDate: 'today',
+  })
 })
