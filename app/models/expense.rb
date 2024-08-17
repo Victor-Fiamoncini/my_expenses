@@ -12,5 +12,7 @@ class Expense < ApplicationRecord
 
   validates :category, presence: true, inclusion: { in: categories.keys }
   validates :name, presence: true
+  validates :payment_date, presence: true
+  validates :user_id, presence: true
   validates :value, numericality: { greater_than: 0 }, presence: true
 end
