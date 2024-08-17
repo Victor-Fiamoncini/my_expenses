@@ -10,7 +10,11 @@ module ExpensesHelper
     ]
   end
 
+  def payment_date_to_view
+    @expense.payment_date.strftime('%d/%m/%Y')
+  end
+
   def number_to_currency_br(number)
-    number_to_currency(number, unit: 'R$ ', separator: ',', delimiter: '.')
+    number_to_currency number, unit: 'R$ ', separator: ',', delimiter: '.'
   end
 end
