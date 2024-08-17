@@ -8,15 +8,10 @@
 
 require 'date'
 
-def random_future_datetime
+def random_future_date
   now = DateTime.now
   future_days = rand(1..365) # Randomly pick a number of days in the future (1 to 365)
   future_time = now + future_days
-  future_time.change(
-    hour: rand(0..23),
-    min: rand(0..59),
-    sec: rand(0..59)
-  )
 end
 
 user = User.create!(
@@ -29,7 +24,7 @@ user = User.create!(
   user.expenses.create!(
     category: Expense.categories.keys.sample,
     name: "Expense ##{i + 1}",
-    payment_date: random_future_datetime,
+    payment_date: random_future_date,
     value: Random.rand(10...300).to_f.round(2)
   )
 end

@@ -10,26 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_240_817_174_334) do
+ActiveRecord::Schema.define(version: 2024_08_17_174334) do
+
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'expenses', force: :cascade do |t|
-    t.string 'name', null: false
-    t.float 'value', null: false
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
-    t.integer 'user_id', null: false
-    t.integer 'category', default: 0
-    t.datetime 'payment_date', precision: 0, null: false
-    t.index ['user_id'], name: 'index_expenses_on_user_id'
+  create_table "expenses", force: :cascade do |t|
+    t.string "name", null: false
+    t.float "value", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id", null: false
+    t.integer "category", default: 0
+    t.date "payment_date", null: false
+    t.index ["user_id"], name: "index_expenses_on_user_id"
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'name', null: false
-    t.string 'email', null: false
-    t.string 'password_digest', null: false
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
+  create_table "users", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "password_digest", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
+
 end
