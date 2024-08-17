@@ -47,5 +47,22 @@ RSpec.describe Expense, type: :model do
       subject.value = -999
       expect(subject).to_not be_valid
     end
+
+    it 'is valid with a valid category' do
+      subject.category = :food
+      expect(subject).to be_valid
+    end
+
+    it 'is not valid without a category' do
+      subject.category = nil
+      expect(subject).not_to be_valid
+    end
+
+    it 'is not valid with an invalid category' do
+      expect do
+        subject.category = :invalid_category
+        expect(subject).not_to be_valid
+      end.to raise_error(ArgumentError)
+    end
   end
 end
