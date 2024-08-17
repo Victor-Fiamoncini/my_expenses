@@ -1,4 +1,6 @@
 class Expense < ApplicationRecord
+  belongs_to :user
+
   enum category: %i[
     bill
     food
@@ -7,8 +9,6 @@ class Expense < ApplicationRecord
     transportation
     utilities
   ]
-
-  belongs_to :user
 
   validates :category, presence: true, inclusion: { in: categories.keys }
   validates :name, presence: true

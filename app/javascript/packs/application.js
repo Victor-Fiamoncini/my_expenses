@@ -8,7 +8,7 @@ import flatpickr from 'flatpickr'
 import 'bootstrap'
 import 'channels'
 import 'flatpickr/dist/flatpickr.min.css'
-import 'flatpickr/dist/themes/material_green.css'
+import 'flatpickr/dist/themes/dark.css'
 
 Rails.start()
 Turbolinks.start()

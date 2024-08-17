@@ -30,6 +30,7 @@
           <th scope="col">#</th>
           <th scope="col">Title</th>
           <th scope="col">Value</th>
+          <th scope="col">Payment Date</th>
           <th scope="col" class="text-end">Actions</th>
         </tr>
       </thead>
@@ -39,6 +40,7 @@
             <th scope="row"><%= expense.id %></th>
             <td><%= expense.name %></td>
             <td><%= number_to_currency_br expense.value %></td>
+            <td><%= payment_date_to_view expense.payment_date %></td>
             <td class="text-end">
               <%= link_to "Edit", edit_expense_path(expense), class: "btn btn-small btn-warning text-white" %>
               <%= link_to "Delete", expense, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-small btn-danger text-white" %>

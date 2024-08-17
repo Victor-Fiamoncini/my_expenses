@@ -19,8 +19,9 @@
       <%= form.select :category, category_options, { include_blank: false }, class: 'form-select' %>
     </div>
     <div class="mb-4">
+      <% formatted_payment_date = payment_date_to_view @expense.payment_date %>
       <%= form.label :payment_date, class: 'form-label' %>
-      <%= form.date_field :payment_date, class: 'form-control', value: payment_date_to_view, placeholder: 'The payment date' %>
+      <%= form.date_field :payment_date, class: 'form-control', value: formatted_payment_date, placeholder: 'The payment date' %>
     </div>
     <div>
       <%= link_to 'Back', expenses_path, class: 'btn btn-secondary text-white' %>
