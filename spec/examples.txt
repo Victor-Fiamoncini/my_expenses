@@ -1,19 +1,22 @@
-example_id                           | status | run_time        |
------------------------------------- | ------ | --------------- |
-./spec/models/expense_spec.rb[1:1:1] | passed | 0.01121 seconds |
-./spec/models/expense_spec.rb[1:1:2] | passed | 0.24602 seconds |
-./spec/models/expense_spec.rb[1:2:1] | passed | 0.00881 seconds |
-./spec/models/expense_spec.rb[1:2:2] | passed | 0.01031 seconds |
-./spec/models/expense_spec.rb[1:2:3] | passed | 0.00796 seconds |
-./spec/models/expense_spec.rb[1:2:4] | passed | 0.01063 seconds |
-./spec/models/expense_spec.rb[1:2:5] | passed | 0.01065 seconds |
-./spec/models/expense_spec.rb[1:2:6] | passed | 0.01238 seconds |
-./spec/models/expense_spec.rb[1:2:7] | passed | 0.00807 seconds |
-./spec/models/user_spec.rb[1:1:1]    | passed | 0.00458 seconds |
-./spec/models/user_spec.rb[1:1:2]    | passed | 0.00415 seconds |
-./spec/models/user_spec.rb[1:2:1]    | passed | 0.02538 seconds |
-./spec/models/user_spec.rb[1:2:2]    | passed | 0.00586 seconds |
-./spec/models/user_spec.rb[1:2:3]    | passed | 0.00588 seconds |
-./spec/models/user_spec.rb[1:2:4]    | passed | 0.00604 seconds |
-./spec/models/user_spec.rb[1:2:5]    | passed | 0.00525 seconds |
-./spec/models/user_spec.rb[1:2:6]    | passed | 0.00658 seconds |
+example_id                            | status | run_time        |
+------------------------------------- | ------ | --------------- |
+./spec/models/expense_spec.rb[1:1:1]  | passed | 0.00467 seconds |
+./spec/models/expense_spec.rb[1:1:2]  | passed | 0.00363 seconds |
+./spec/models/expense_spec.rb[1:2:1]  | passed | 0.00413 seconds |
+./spec/models/expense_spec.rb[1:2:2]  | passed | 0.0043 seconds  |
+./spec/models/expense_spec.rb[1:2:3]  | passed | 0.01766 seconds |
+./spec/models/expense_spec.rb[1:2:4]  | passed | 0.01097 seconds |
+./spec/models/expense_spec.rb[1:2:5]  | passed | 0.00408 seconds |
+./spec/models/expense_spec.rb[1:2:6]  | passed | 0.00505 seconds |
+./spec/models/expense_spec.rb[1:2:7]  | passed | 0.00428 seconds |
+./spec/models/expense_spec.rb[1:2:8]  | passed | 0.00504 seconds |
+./spec/models/expense_spec.rb[1:2:9]  | passed | 0.00411 seconds |
+./spec/models/expense_spec.rb[1:2:10] | passed | 0.00446 seconds |
+./spec/models/user_spec.rb[1:1:1]     | passed | 0.14325 seconds |
+./spec/models/user_spec.rb[1:1:2]     | passed | 0.00328 seconds |
+./spec/models/user_spec.rb[1:2:1]     | passed | 0.00262 seconds |
+./spec/models/user_spec.rb[1:2:2]     | passed | 0.0025 seconds  |
+./spec/models/user_spec.rb[1:2:3]     | passed | 0.00376 seconds |
+./spec/models/user_spec.rb[1:2:4]     | passed | 0.00295 seconds |
+./spec/models/user_spec.rb[1:2:5]     | passed | 0.0025 seconds  |
+./spec/models/user_spec.rb[1:2:6]     | passed | 0.00325 seconds |

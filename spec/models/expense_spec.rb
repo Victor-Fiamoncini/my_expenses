@@ -11,7 +11,9 @@ RSpec.describe Expense, type: :model do
 
   subject do
     described_class.new(
+      category: :bill,
       name: Faker::Name.name,
+      payment_date: Date.today + 30,
       value: Faker::Number.number(digits: 3),
       user_id: user.id
     )
@@ -63,6 +65,21 @@ RSpec.describe Expense, type: :model do
         subject.category = :invalid_category
         expect(subject).not_to be_valid
       end.to raise_error(ArgumentError)
+    end
+
+    it 'is valid with a valid payment_date' do
+      subject.payment_date = Date.today + 30
+      expect(subject).to be_valid
+    end
+
+    it 'is not valid without a payment_date' do
+      subject.payment_date = nil
+      expect(subject).not_to be_valid
+    end
+
+    it 'is not valid with a past payment_date' do
+      subject.payment_date = Date.today - 30
+      expect(subject).not_to be_valid
     end
   end
 end
