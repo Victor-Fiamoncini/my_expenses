@@ -1,12 +1,19 @@
 class ExpensesController < ApplicationController
+  EXPENSES_PER_PAGE = 10
+
   before_action :authorized
   before_action :set_expense_by_id, only: %i[edit update destroy]
 
   # GET /expenses
   def index
-    @total_spent = current_user.expenses.sum(:value)
-    @average = (@total_spent / current_user.expenses.count).round(2)
-    @expenses = current_user.expenses.paginate(page: params[:page], per_page: 5)
+    expenses = current_user.expenses
+
+    @total_spent = expenses.sum :value
+    @average = (@total_spent / expenses.count).round 2
+    @expenses = expenses.paginate(
+      page: params[:page],
+      per_page: EXPENSES_PER_PAGE
+    )
   end
 
   # GET /expenses/new
