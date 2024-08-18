@@ -19,6 +19,8 @@
 
 # Learn more: http://github.com/javan/whenever
 
+set :output, 'log/cron.log'
+
 every 1.day do
   rake 'daily:payment_day_is_tomorrow'
 end
