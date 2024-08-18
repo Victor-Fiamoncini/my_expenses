@@ -19,6 +19,8 @@
 
 # Learn more: http://github.com/javan/whenever
 
+ENV.each { |k, v| env(k, v) }
+
 set :output, 'log/cron.log'
 
 every 1.day do
