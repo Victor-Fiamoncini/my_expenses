@@ -25,7 +25,7 @@ RSpec.describe ExpenseMailer, type: :mailer do
     end
 
     it 'renders the headers' do
-      expect(mail.subject).to eq "The payment day of your expense: #{expense.name} is tomorrow"
+      expect(mail.subject).to eq "The payment day of #{expense.name} is tomorrow"
       expect(mail.to).to eq [expense.user.email]
       expect(mail.content_type).to eq 'text/html; charset=UTF-8'
     end
