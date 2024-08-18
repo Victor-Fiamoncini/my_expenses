@@ -13,7 +13,7 @@ Bundler v2.2.32
 ```bash
 docker-compose up --build # builds and starts rails and postgres containers
 docker exec -it web bash # access rails container
-whenever --update-crontab # starts cron jobs
+whenever --update-crontab --set environment='development' # starts cron jobs
 ```
 
 ----------
