@@ -26,7 +26,7 @@ class ExpensesController < ApplicationController
 
   # POST /expenses
   def create
-    @expense = Expense.new(expense_params_with_user)
+    @expense = Expense.new expense_params_with_user
 
     respond_to do |format|
       if @expense.save
@@ -42,7 +42,7 @@ class ExpensesController < ApplicationController
   # PATCH/PUT /expenses/1
   def update
     respond_to do |format|
-      if @expense.update(expense_params)
+      if @expense.update expense_params
         flash[:notice] = "Expense #{@expense.name} was successfully updated"
 
         format.html { redirect_to expenses_url }
@@ -66,14 +66,14 @@ class ExpensesController < ApplicationController
   private
 
     def set_expense_by_id
-      @expense = current_user.expenses.find(params[:id])
+      @expense = current_user.expenses.find params[:id]
     end
 
     def expense_params_with_user
-      expense_params.merge!(user_id: current_user.id)
+      expense_params.merge! user_id: current_user.id
     end
 
     def expense_params
-      params.require(:expense).permit(:category, :name, :payment_date, :value)
+      params.require(:expense).permit :category, :name, :payment_date, :value
     end
 end
