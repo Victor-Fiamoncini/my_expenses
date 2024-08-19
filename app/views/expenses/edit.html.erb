@@ -21,7 +21,8 @@
     <div class="mb-4">
       <%= form.label :payment_date, class: 'form-label' %>
       <% if is_past_date? @expense.payment_date %>
-        <input class="form-control" type="text" value="<%= format_date_to_day_month_and_year @expense.payment_date %>" disabled />
+        <input class="form-control" type="text" value="<%= format_date_to_day_month_and_year @expense.payment_date %>" aria-describedby="payment-date-advise" disabled />
+        <div id="payment-date-advise" class="form-text">Past payment dates cannot be updated.</div>
       <% else %>
         <%= form.date_field :payment_date, class: 'form-control', value: format_date_to_day_month_and_year(@expense.payment_date), placeholder: 'The payment date' %>
       <% end %>
