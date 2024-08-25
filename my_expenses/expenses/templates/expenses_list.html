@@ -1,1 +1,11 @@
-<h1>Expenses</h1>
+{% extends "base.html" %}
+
+{% block title %} Expenses {% endblock %}
+
+{% block header %}
+    {% include 'header.html' with title="Expenses" %}
+{% endblock %}
+
+{% block content %}
+    <h1>Expenses</h1>
+{% endblock %}

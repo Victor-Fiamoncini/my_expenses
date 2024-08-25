@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="{% static "css/style.css" %}" />
-        <script src='{% static "js/main.js" %}' defer></script>
-        <title>My Expenses</title>
-    </head>
+{% extends "base.html" %}
 
-    <body>
-        <a href="/about">About</a>
-    </body>
-</html>
+{% block title %} Login {% endblock %}
+
+{% block header %}
+    {% include 'header.html' with title="Login" %}
+{% endblock %}
+
+{% block content %}
+    <h1>Login</h1>
+{% endblock %}
