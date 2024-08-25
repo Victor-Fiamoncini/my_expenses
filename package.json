@@ -1,0 +1,10 @@
+{
+    "name": "my_expenses",
+    "version": "1.0.0",
+    "author": "Victor B. Fiamoncini",
+    "description": "Fullstack expenses tracker app",
+    "dependencies": {
+        "bootstrap": "^5.3.3",
+        "bootswatch": "^5.3.3"
+    }
+}
