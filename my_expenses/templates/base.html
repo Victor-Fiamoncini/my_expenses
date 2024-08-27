@@ -16,12 +16,19 @@
         <script src='{% static "js/main.js" %}' defer></script>
         <title>My Expenses - {% block title %}{% endblock %}</title>
     </head>
-
-    {% block header %}
-        {% include 'header.html' %}
-    {% endblock %}
-
     <body>
-        <div class="container py-4">{% block content %}{% endblock %}</div>
+        {% block header %}
+            {% include 'header.html' %}
+        {% endblock %}
+
+        <div class="container py-4">
+            {% if messages %}
+                {% for message in messages %}
+                    {% include 'alert.html' with message=message %}
+                {% endfor %}
+            {% endif %}
+
+            {% block content %}{% endblock %}
+        </div>
     </body>
 </html>
