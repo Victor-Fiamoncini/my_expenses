@@ -51,3 +51,9 @@ def signup(request: HttpRequest) -> HttpResponse:
         form = forms.SignUpUserForm()
 
     return render(request, "signup.html", {"form": form})
+
+
+def signout(request: HttpRequest) -> HttpResponse:
+    logout(request)
+
+    return redirect("users:signin")

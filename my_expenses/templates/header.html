@@ -1,18 +1,14 @@
 <header class="position-relative py-4 bg-primary text-white">
-    <div
-        class="container d-flex justify-content-between align-items-center gap-4"
-    >
+    <div class="container d-flex justify-content-between align-items-center gap-4">
         <h1 class="fw-bold fs-2 text-white m-0 text-wrap">
             My Expenses {% if title %} - {{ title }}{% endif %}
         </h1>
 
-        <nav
-            class="d-flex gap-2 flex-wrap justify-content-center align-items-center"
-        >
+        <nav class="d-flex gap-2 flex-wrap justify-content-center align-items-center">
             {% if user.is_authenticated %}
                 <span class="text-white fw-bold fs-5 text-center">{{ user.username }}</span>
 
-                <a href="{% url 'users:signout' %}" class="text-white fw-bold fs-5">Logout</a>
+                <a href="{% url 'users:signout' %}" class="text-white fw-bold fs-5">Sign out</a>
             {% endif %}
         </nav>
     </div>
