@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-    {% if request.user.is_authenticated %}
-        Hello: {{ request.user.email }}
+    {% if user.is_authenticated %}
+        Hello: {{ user.email }}
     {% endif %}
 {% endblock %}

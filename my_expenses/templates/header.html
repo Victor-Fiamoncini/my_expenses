@@ -9,9 +9,11 @@
         <nav
             class="d-flex gap-2 flex-wrap justify-content-center align-items-center"
         >
-            <span class="text-white fw-bold fs-5 text-center">Username</span>
+            {% if user.is_authenticated %}
+                <span class="text-white fw-bold fs-5 text-center">{{ user.username }}</span>
 
-            <a href="/logout" class="text-white fw-bold fs-5">Logout</a>
+                <a href="{% url 'users:signout' %}" class="text-white fw-bold fs-5">Logout</a>
+            {% endif %}
         </nav>
     </div>
 </header>
