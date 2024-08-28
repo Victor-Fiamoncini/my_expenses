@@ -1,59 +1,60 @@
-from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 from django.http import HttpRequest, HttpResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
+from django.urls import reverse_lazy
+from django.views.generic import FormView, View
 
 from . import forms
 
 
-def signin(request: HttpRequest) -> HttpResponse:
-    if request.method == "POST":
-        form = forms.SignInUserForm(request.POST)
+class SignInView(FormView):
+    template_name = "signin.html"
+    form_class = forms.SignInUserForm
+    success_url = reverse_lazy("expenses:expenses_list")
 
-        if form.is_valid():
-            email = form.cleaned_data["email"]
-            password = form.cleaned_data["password"]
+    def form_valid(self, form: forms.SignInUserForm) -> HttpResponse:
+        email = form.cleaned_data["email"]
+        password = form.cleaned_data["password"]
 
-            user = authenticate(request, email=email, password=password)
+        user = authenticate(self.request, email=email, password=password)
 
-            if user is not None:
-                login(request, user)
+        if user is not None:
+            login(self.request, user)
 
-                return redirect("expenses:expenses_list")
-            else:
-                form.add_error("email", "Invalid email or password.")
-    else:
-        form = forms.SignInUserForm()
+            return super().form_valid(form)
 
-    return render(request, "signin.html", {"form": form})
+        form.add_error("email", "Invalid email or password.")
 
-
-def signup(request: HttpRequest) -> HttpResponse:
-    if request.method == "POST":
-        form = forms.SignUpUserForm(request.POST)
-
-        if form.is_valid():
-            form.save()
-
-            username = form.cleaned_data["username"]
-            email = form.cleaned_data["email"]
-            password = form.cleaned_data["password1"]
-
-            user = authenticate(request, email=email, password=password)
-
-            if user is not None:
-                login(request, user)
-
-                messages.success(request, f"Welcome {username} to your dashboard.")
-
-                return redirect("expenses:expenses_list")
-    else:
-        form = forms.SignUpUserForm()
-
-    return render(request, "signup.html", {"form": form})
+        return self.form_invalid(form)
 
 
-def signout(request: HttpRequest) -> HttpResponse:
-    logout(request)
+class SignUpView(FormView):
+    template_name = "signup.html"
+    form_class = forms.SignUpUserForm
+    success_url = reverse_lazy("expenses:expenses_list")
 
-    return redirect("users:signin")
+    def form_valid(self, form: forms.SignUpUserForm) -> HttpResponse:
+        form.save()
+
+        username = form.cleaned_data["username"]
+        email = form.cleaned_data["email"]
+        password = form.cleaned_data["password1"]
+
+        user = authenticate(self.request, email=email, password=password)
+
+        if user is not None:
+            login(self.request, user)
+
+            messages.success(self.request, f"Welcome {username} to your dashboard.")
+
+            return super().form_valid(form)
+
+        return self.form_invalid(form)
+
+
+class SignOutView(View):
+    def get(self, request: HttpRequest, *args, **kwargs) -> HttpResponse:
+        logout(request)
+
+        return redirect("users:signin")
