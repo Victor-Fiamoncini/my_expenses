@@ -1,6 +1,6 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import TemplateView
+from django.http import HttpRequest, HttpResponse
+from django.shortcuts import render
 
 
-class ExpensesListView(LoginRequiredMixin, TemplateView):
-    template_name = "expenses_list.html"
+def expenses_list(request: HttpRequest) -> HttpResponse:
+    return render(request, "expenses_list.html")

@@ -1,1 +1,5 @@
-console.log("Hello world");
+import 'bootstrap'
+
+const greet = () => 'hello'
+
+console.log(greet())
