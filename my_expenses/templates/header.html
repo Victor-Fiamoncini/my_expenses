@@ -8,7 +8,7 @@
             {% if user.is_authenticated %}
                 <span class="text-white fw-bold fs-5 text-center">{{ user.username }}</span>
 
-                <a href="{% url 'users:signout' %}" class="text-white fw-bold fs-5">Sign out</a>
+                <a href="{% url 'users_sessions:delete' %}" class="text-white fw-bold fs-5">Sign out</a>
             {% endif %}
         </nav>
     </div>

@@ -1,32 +1,10 @@
 from django.contrib.auth.forms import UserCreationForm
-from django.forms import (
-    CharField,
-    EmailField,
-    EmailInput,
-    Form,
-    TextInput,
-    PasswordInput,
-)
+from django.forms import CharField, EmailField, EmailInput, TextInput, PasswordInput
 
 from . import models
 
 
-class SignInUserForm(Form):
-    email = EmailField(
-        label="Email",
-        widget=EmailInput(
-            attrs={"class": "form-control", "placeholder": "Enter your email"}
-        ),
-    )
-
-    password = CharField(
-        widget=PasswordInput(
-            attrs={"class": "form-control", "placeholder": "Enter your password"}
-        ),
-    )
-
-
-class SignUpUserForm(UserCreationForm):
+class CreateUserForm(UserCreationForm):
     class Meta:
         model = models.CustomUser
         fields = ["username", "email", "password1", "password2"]

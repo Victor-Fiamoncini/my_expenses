@@ -1,36 +1,14 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import redirect, render
 
 from . import forms
 
 
-def signin(request: HttpRequest) -> HttpResponse:
+def create(request: HttpRequest) -> HttpResponse:
     if request.method == "POST":
-        form = forms.SignInUserForm(request.POST)
-
-        if form.is_valid():
-            email = form.cleaned_data["email"]
-            password = form.cleaned_data["password"]
-
-            user = authenticate(request, email=email, password=password)
-
-            if user is not None:
-                login(request, user)
-
-                return redirect("expenses:expenses_list")
-            else:
-                form.add_error("email", "Invalid email or password.")
-    else:
-        form = forms.SignInUserForm()
-
-    return render(request, "signin.html", {"form": form})
-
-
-def signup(request: HttpRequest) -> HttpResponse:
-    if request.method == "POST":
-        form = forms.SignUpUserForm(request.POST)
+        form = forms.CreateUserForm(request.POST)
 
         if form.is_valid():
             form.save()
@@ -46,14 +24,8 @@ def signup(request: HttpRequest) -> HttpResponse:
 
                 messages.success(request, f"Welcome {username} to your dashboard.")
 
-                return redirect("expenses:expenses_list")
+                return redirect("expenses:index")
     else:
-        form = forms.SignUpUserForm()
+        form = forms.CreateUserForm()
 
-    return render(request, "signup.html", {"form": form})
-
-
-def signout(request: HttpRequest) -> HttpResponse:
-    logout(request)
-
-    return redirect("users:signin")
+    return render(request, "users/create.html", {"form": form})
