@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
-{% block title %} New Expense {% endblock %}
+{% block title %} Update Expense {% endblock %}
 
 {% block header %}
-    {% include 'header.html' with title="New Expense" %}
+    {% include 'header.html' with title="Update Expense" %}
 {% endblock %}
 
 {% block content %}
-    <main id="expenses-create">
-        <form method="post" action="{% url 'expenses:create' %}">
+    <main id="expenses-update">
+        <form method="post" action="{% url 'expenses:update' expense.id %}">
             {% csrf_token %}
 
             {% include 'form_errors.html' %}
@@ -31,7 +31,7 @@
             <div class="d-flex gap-2">
                 <a href="{% url 'expenses:index' %}" class="btn btn-secondary text-white">Back</a>
 
-                <button type="submit" class="btn btn-primary">Create Expense</button>
+                <button type="submit" class="btn btn-primary">Update Expense</button>
             </div>
         </form>
     </main>
