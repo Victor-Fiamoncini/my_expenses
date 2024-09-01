@@ -1,5 +1,5 @@
-from django.contrib import messages
 from django.contrib.auth import authenticate, login
+from django.contrib.messages import success
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import redirect, render
 
@@ -22,7 +22,7 @@ def create(request: HttpRequest) -> HttpResponse:
             if user is not None:
                 login(request, user)
 
-                messages.success(request, f"Welcome {username} to your dashboard.")
+                success(request, f"Welcome {username} to your dashboard.")
 
                 return redirect("expenses:index")
     else:

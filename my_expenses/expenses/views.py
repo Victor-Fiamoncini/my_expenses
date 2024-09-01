@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.messages import success
 from django.core.paginator import Paginator
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import redirect, render
@@ -37,6 +38,8 @@ def create(request: HttpRequest) -> HttpResponse:
 
             expense.save()
 
+            success(request, f"Expense {name} has been created")
+
             return redirect("expenses:index")
     else:
         form = forms.CreateExpenseForm()
@@ -46,13 +49,15 @@ def create(request: HttpRequest) -> HttpResponse:
 
 @login_required
 def update(request: HttpRequest, id: int) -> HttpResponse:
-    expense = models.Expense.objects.get(id=id)
+    expense = models.Expense.objects.get(id=id, user=request.user)
 
     if request.method == "POST":
         form = forms.UpdateExpenseForm(request.POST, instance=expense)
 
         if form.is_valid():
             form.save()
+
+            success(request, f"Expense {expense.name} has been updated")
 
             return redirect("expenses:index")
     else:
@@ -63,4 +68,13 @@ def update(request: HttpRequest, id: int) -> HttpResponse:
 
 @login_required
 def delete(request: HttpRequest, id: int) -> HttpResponse:
-    return render(request, "expenses/update.html")
+    expense = models.Expense.objects.get(id=id, user=request.user)
+
+    if request.method == "POST":
+        expense.delete()
+
+        success(request, f"Expense {expense.name} has been deleted")
+
+        return redirect("expenses:index")
+
+    return render(request, "expenses/delete.html", {"expense": expense})
