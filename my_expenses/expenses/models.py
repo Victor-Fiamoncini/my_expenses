@@ -22,11 +22,18 @@ class Expense(Model):
     created_at = DateTimeField(auto_now_add=True)
     updated_at = DateTimeField(auto_now=True)
 
-    def clean(self) -> None:
-        if self.payment_date and self.payment_date < timezone.now().date():
+    def clean(self, *args, **kwargs) -> None:
+        if self.payment_date < timezone.now().date():
             raise ValidationError(
-                {"payment_date": "The payment date can't be in the past"}
+                {"payment_date": "The payment date can't be in the past."}
             )
+
+        super().clean(*args, **kwargs)
+
+    def save(self, *args, **kwargs) -> None:
+        self.full_clean()
+
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name
