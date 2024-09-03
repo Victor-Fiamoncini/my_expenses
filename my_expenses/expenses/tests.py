@@ -6,10 +6,9 @@ from faker import Faker
 from . import models
 
 
-class ExpenseModalTestCase(TestCase):
+class ExpenseModelTestCase(TestCase):
     def setUp(self) -> None:
         self.faker = Faker()
-
         self.user = get_user_model().objects.create_user(
             username=self.faker.user_name(),
             email=self.faker.email(),
@@ -28,7 +27,7 @@ class ExpenseModalTestCase(TestCase):
 
         self.assertEqual(models.Expense.objects.get(name=name), expense)
 
-    def test_must_raise_an_validation_error_if_payment_date_is_invalid(self) -> None:
+    def test_must_raise_validation_error_if_payment_date_is_invalid(self) -> None:
         name = self.faker.name()
         value = str(self.faker.pyfloat(left_digits=3, right_digits=2, positive=True))
         payment_date = self.faker.past_date()
@@ -40,9 +39,9 @@ class ExpenseModalTestCase(TestCase):
         with self.assertRaises(ValidationError):
             expense.save()
 
-    def test_must_raise_an_validation_error_if_value_is_invalid(self) -> None:
+    def test_must_raise_validation_error_if_value_is_invalid(self) -> None:
         name = self.faker.name()
-        value = str(self.faker.pyfloat(left_digits=3, right_digits=3, positive=True))
+        value = str(self.faker.pyfloat(left_digits=3, right_digits=10, positive=True))
         payment_date = self.faker.future_date()
 
         expense = models.Expense(

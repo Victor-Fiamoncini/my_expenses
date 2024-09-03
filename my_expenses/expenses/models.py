@@ -35,5 +35,5 @@ class Expense(Model):
 
         super().save(*args, **kwargs)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
