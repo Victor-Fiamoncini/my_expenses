@@ -1,8 +1,13 @@
+import logging
+
 from datetime import date, timedelta
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 
 from ... import models
+
+
+logger = logging.getLogger(__name__)
 
 
 def handle(*args, **kwargs) -> None:
@@ -36,3 +41,7 @@ def _send_expense_report(email: str, username: str, payment_date: date) -> None:
     )
     email_message.content_subtype = "html"
     email_message.send()
+
+    logger.info(
+        f"Successfully sent payment-date notifications to user: {username} with {email}"
+    )
