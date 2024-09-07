@@ -13,7 +13,9 @@
 
         <ul>
             {% for expense in expenses %}
-                <li>{{ expense.name }}</li>
+                <li class="display: block;">
+                    {{ expense.name }}: {{ expense.value }}
+                </li>
             {% endfor %}
         </ul>
     </div>
