@@ -6,6 +6,9 @@ from . import forms
 
 
 def create(request: HttpRequest) -> HttpResponse:
+    if request.user.is_authenticated:
+        return redirect("expenses:index")
+
     if request.method == "POST":
         form = forms.CreateSessionForm(request.POST)
 
