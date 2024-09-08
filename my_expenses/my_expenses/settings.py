@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from dotenv import load_dotenv
-from os import getenv
+from os import getenv, path
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_crontab",
     "users_sessions",
     "users",
     "expenses",
@@ -149,3 +150,61 @@ STATICFILES_FINDERS = [
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "users.CustomUser"
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "simple": {
+            "format": "{levelname} {message}",
+            "style": "{",
+        },
+        "standard": {
+            "format": "%(asctime)s %(levelname)s %(name)s %(message)s",
+        },
+        "verbose": {
+            "format": "{name} {levelname} {asctime} {module} {process:d} {thread:d} {message}",
+            "style": "{",
+        },
+    },
+    "handlers": {
+        "console": {
+            "level": "INFO",
+            "class": "logging.StreamHandler",
+            "formatter": "standard",
+        },
+        "crontab": {
+            "level": "DEBUG",
+            "class": "logging.FileHandler",
+            "filename": path.join(BASE_DIR, "logs", "cron.log"),
+            "formatter": "standard",
+        },
+        "payment_day_is_tomorrow_mail": {
+            "level": "DEBUG",
+            "class": "logging.FileHandler",
+            "filename": path.join(BASE_DIR, "logs", "payment_day_is_tomorrow_mail.log"),
+            "formatter": "standard",
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console"],
+            "level": "DEBUG",
+            "propagate": True,
+        },
+        "django_crontab": {
+            "handlers": ["console", "crontab"],
+            "level": "DEBUG",
+            "propagate": True,
+        },
+        "expenses.management.commands.payment_day_is_tomorrow_mail": {
+            "handlers": ["console", "payment_day_is_tomorrow_mail"],
+            "level": "DEBUG",
+            "propagate": True,
+        },
+    },
+}
+
+CRONJOBS = [
+    ("0 0 * * *", "expenses.management.commands.payment_day_is_tomorrow_mail.handle")
+]
