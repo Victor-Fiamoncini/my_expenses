@@ -1,17 +1,17 @@
-import logging
-
 from datetime import date, timedelta
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
+from django.utils import timezone
+from logging import getLogger
 
 from ... import models
 
 
-logger = logging.getLogger(__name__)
+logger = getLogger(__name__)
 
 
 def handle(*args, **kwargs) -> None:
-    tomorrow = date.today() + timedelta(days=1)
+    tomorrow = timezone.now() + timedelta(days=1)
 
     users_with_expenses = (
         models.Expense.objects.filter(payment_date=tomorrow)
@@ -25,7 +25,7 @@ def handle(*args, **kwargs) -> None:
 
 def _send_expense_report(email: str, username: str, payment_date: date) -> None:
     expenses = models.Expense.objects.filter(
-        user__email=email, payment_date=payment_date
+        user__email=email, user__username=username, payment_date=payment_date
     )
 
     html_message = render_to_string(
@@ -42,6 +42,4 @@ def _send_expense_report(email: str, username: str, payment_date: date) -> None:
     email_message.content_subtype = "html"
     email_message.send()
 
-    logger.info(
-        f"Successfully sent payment-date notifications to user: {username} with {email}"
-    )
+    logger.info(f"Successfully sent payment-date notifications to: {username}/{email}")
