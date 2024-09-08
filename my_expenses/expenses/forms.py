@@ -1,4 +1,14 @@
-from django.forms import CharField, DateField, DateInput, Form, ModelForm, TextInput
+from datetime import date
+from django.forms import (
+    CharField,
+    DateField,
+    DateInput,
+    Form,
+    ModelForm,
+    TextInput,
+    ValidationError,
+)
+from django.utils import timezone
 
 from . import models
 
@@ -71,3 +81,13 @@ class UpdateExpenseForm(ModelForm):
             },
         ),
     )
+
+    def clean_payment_date(self) -> date:
+        payment_date = self.cleaned_data.get("payment_date")
+
+        if payment_date and payment_date < timezone.now().date():
+            raise ValidationError(
+                "The payment date cannot be in the past (yesterday or older)."
+            )
+
+        return payment_date  # type: ignore
