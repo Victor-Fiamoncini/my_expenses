@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %} Delete Expense {% endblock %}
+{% block title %} Delete {{ expense.name }} {% endblock %}
 
 {% block header %}
-    {% include 'header.html' with title="Delete Expense" %}
+    {% include 'header.html' with title="Delete "|add:expense.name %}
 {% endblock %}
+
+{% load number_filters %}
 
 {% block content %}
     <main id="expenses-delete">
@@ -14,7 +16,9 @@
             </div>
 
             <div class="card-body">
-                <p>Are you sure you want to delete the expense <strong>{{ expense.name }}</strong>?</p>
+                <p>
+                    Are you sure you want to delete the expense <strong>{{ expense.name }}</strong> with value of <strong>{{ expense.value|format_to_currency }}</strong>?
+                </p>
 
                 <form method="post" action="{% url 'expenses:delete' expense.id %}">
                     {% csrf_token %}
