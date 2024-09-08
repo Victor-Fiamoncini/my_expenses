@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% load date_filters %}
+{% load number_filters %}
 
 {% block content %}
     <main id="expenses-index">
@@ -43,7 +44,7 @@
 
                             <td>{{ expense.name }}</td>
 
-                            <td>{{ expense.value }}</td>
+                            <td>{{ expense.value|format_to_currency }}</td>
 
                             <td>{{ expense.payment_date|format_to_day_month_and_year }}</td>
 
