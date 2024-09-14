@@ -53,11 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
-    flatpickr('input[type=date]', {
+    flatpickr('input[id=expense-payment-date-input]', {
         dateFormat: 'd/m/Y',
         altInput: true,
         altFormat: 'd/m/Y',
         allowInput: true,
-        minDate: 'today',
     })
 })

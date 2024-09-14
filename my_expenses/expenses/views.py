@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.messages import success
 from django.core.paginator import Paginator
 from django.http import HttpRequest, HttpResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 
 from . import forms
 from . import models
@@ -49,26 +49,40 @@ def create(request: HttpRequest) -> HttpResponse:
 
 @login_required
 def update(request: HttpRequest, id: int) -> HttpResponse:
-    expense = models.Expense.objects.get(id=id, user=request.user)
+    expense = get_object_or_404(models.Expense, pk=id, user=request.user)
 
     if request.method == "POST":
-        form = forms.UpdateExpenseForm(request.POST, instance=expense)
+        form = forms.UpdateExpenseForm(request.POST)
 
         if form.is_valid():
-            form.save()
+            name = form.cleaned_data["name"]
+            value = form.cleaned_data["value"]
+            payment_date = form.cleaned_data["payment_date"]
+
+            expense.name = name
+            expense.value = value
+            expense.payment_date = payment_date
+
+            expense.save()
 
             success(request, f"Expense {expense.name} has been updated")
 
             return redirect("expenses:index")
     else:
-        form = forms.UpdateExpenseForm(instance=expense)
+        form = forms.UpdateExpenseForm(
+            initial={
+                "name": expense.name,
+                "value": expense.value,
+                "payment_date": expense.payment_date,
+            }
+        )
 
     return render(request, "expenses/update.html", {"expense": expense, "form": form})
 
 
 @login_required
 def delete(request: HttpRequest, id: int) -> HttpResponse:
-    expense = models.Expense.objects.get(id=id, user=request.user)
+    expense = get_object_or_404(models.Expense, pk=id, user=request.user)
 
     if request.method == "POST":
         expense.delete()
