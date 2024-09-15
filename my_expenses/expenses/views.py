@@ -58,10 +58,12 @@ def update(request: HttpRequest, id: int) -> HttpResponse:
             name = form.cleaned_data["name"]
             value = form.cleaned_data["value"]
             payment_date = form.cleaned_data["payment_date"]
+            paid = form.cleaned_data["paid"]
 
             expense.name = name
             expense.value = value
             expense.payment_date = payment_date
+            expense.paid = paid
 
             expense.save()
 
@@ -74,6 +76,7 @@ def update(request: HttpRequest, id: int) -> HttpResponse:
                 "name": expense.name,
                 "value": expense.value,
                 "payment_date": expense.payment_date,
+                "paid": expense.paid,
             }
         )
 

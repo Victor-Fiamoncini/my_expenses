@@ -1,4 +1,12 @@
-from django.forms import CharField, DateField, DateInput, Form, TextInput
+from django.forms import (
+    BooleanField,
+    CharField,
+    CheckboxInput,
+    DateField,
+    DateInput,
+    Form,
+    TextInput,
+)
 
 
 class CreateExpenseForm(Form):
@@ -66,4 +74,11 @@ class UpdateExpenseForm(Form):
                 "placeholder": "The payment date",
             },
         ),
+    )
+
+    paid = BooleanField(
+        required=False,
+        label="It is paid",
+        label_suffix="",
+        widget=CheckboxInput(attrs={"class": "form-check-input"}),
     )

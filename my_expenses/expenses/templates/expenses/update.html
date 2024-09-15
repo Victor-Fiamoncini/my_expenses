@@ -30,6 +30,11 @@
                 {{ form.payment_date }}
             </div>
 
+            <div class="mb-4 form-check">
+                {{ form.paid.label_tag }}
+                {{ form.paid }}
+            </div>
+
             <div class="d-flex gap-2">
                 <a href="{% url 'expenses:index' %}" class="btn btn-secondary text-white">Back</a>
 
