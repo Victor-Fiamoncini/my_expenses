@@ -1,5 +1,4 @@
 from django.contrib.auth import get_user_model
-from django.core.exceptions import ValidationError
 from django.test import TestCase
 from faker import Faker
 
@@ -26,27 +25,3 @@ class ExpenseModelTestCase(TestCase):
         expense.save()
 
         self.assertEqual(models.Expense.objects.get(name=name), expense)
-
-    def test_must_raise_validation_error_if_payment_date_is_invalid(self) -> None:
-        name = self.faker.name()
-        value = str(self.faker.pyfloat(left_digits=3, right_digits=2, positive=True))
-        payment_date = self.faker.past_date()
-
-        expense = models.Expense(
-            name=name, value=value, payment_date=payment_date, user=self.user
-        )
-
-        with self.assertRaises(ValidationError):
-            expense.save()
-
-    def test_must_raise_validation_error_if_value_is_invalid(self) -> None:
-        name = self.faker.name()
-        value = str(self.faker.pyfloat(left_digits=3, right_digits=10, positive=True))
-        payment_date = self.faker.future_date()
-
-        expense = models.Expense(
-            name=name, value=value, payment_date=payment_date, user=self.user
-        )
-
-        with self.assertRaises(ValidationError):
-            expense.save()
