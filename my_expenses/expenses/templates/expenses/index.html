@@ -16,7 +16,23 @@
                 New Expense
             </a>
 
-            <div class="d-flex align-items-center h-100 gap-2"></div>
+            <div class="d-flex align-items-center h-100 gap-2">
+                {% if total_spent > 0 %}
+                    <span class="text-primary fw-bold">
+                        Total expenses: {{ total_spent|format_to_currency  }}
+                    </span>
+                {% endif %}
+
+                {% if total_spent > 0 and average > 0 %}
+                    <span class="text-primary fw-bold">|</span>
+                {% endif %}
+
+                {% if average > 0 %}
+                    <span class="text-primary fw-bold">
+                        Average: {{ average|format_to_currency  }}
+                    </span>
+                {% endif %}
+            </div>
         </div>
 
         {% if pagination %}

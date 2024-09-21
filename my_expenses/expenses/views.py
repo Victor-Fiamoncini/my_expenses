@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages import success
 from django.core.paginator import Paginator
+from django.db.models import Sum
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 
@@ -12,12 +13,22 @@ from . import models
 def index(request: HttpRequest) -> HttpResponse:
     page_number = request.GET.get("page")
 
-    expenses = request.user.expenses.all().order_by("-created_at")  # type: ignore
+    expenses = models.Expense.objects.filter(user=request.user).order_by("-created_at")
+
+    total_spent = expenses.aggregate(Sum("value"))["value__sum"] or 0
+    count = expenses.count()
+    average = round(total_spent / count, 2) if count > 0 else 0
 
     paginator = Paginator(expenses, 10)
-    pagination = paginator.get_page(page_number)
+    paginated_expenses = paginator.get_page(page_number)
 
-    return render(request, "expenses/index.html", {"pagination": pagination})
+    context = {
+        "total_spent": total_spent,
+        "average": average,
+        "pagination": paginated_expenses,
+    }
+
+    return render(request, "expenses/index.html", context)
 
 
 @login_required
