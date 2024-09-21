@@ -4,13 +4,13 @@ from django.template.loader import render_to_string
 from django.utils import timezone
 from logging import getLogger
 
-from ... import models
+from . import models
 
 
 logger = getLogger(__name__)
 
 
-def handle(*args, **kwargs) -> None:
+def payment_day_is_tomorrow_mail(*args, **kwargs) -> None:
     tomorrow = timezone.now() + timedelta(days=1)
 
     users_with_expenses = (

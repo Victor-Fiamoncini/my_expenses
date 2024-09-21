@@ -205,6 +205,4 @@ LOGGING = {
     },
 }
 
-CRONJOBS = [
-    ("0 0 * * *", "expenses.management.commands.payment_day_is_tomorrow_mail.handle")
-]
+CRONJOBS = [("0 0 * * *", "expenses.mails.payment_day_is_tomorrow_mail")]
