@@ -1,6 +1,9 @@
 {
     "private": true,
     "type": "module",
+    "author": "Victor B. Fiamoncini",
+    "description": "Fullstack expenses tracker app.",
+    "version": "1.0.0",
     "scripts": {
         "dev": "vite",
         "build": "vite build"
