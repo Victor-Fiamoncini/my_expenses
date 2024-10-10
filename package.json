@@ -8,14 +8,12 @@
         "dev": "vite",
         "build": "vite build"
     },
-    "dependencies": {
+    "devDependencies": {
+        "axios": "^1.7.4",
         "bootstrap": "^5.3.3",
         "bootswatch": "^5.3.3",
         "cleave.js": "^1.6.0",
-        "flatpickr": "^4.6.13"
-    },
-    "devDependencies": {
-        "axios": "^1.7.4",
+        "flatpickr": "^4.6.13",
         "laravel-vite-plugin": "^1.0",
         "sass": "^1.79.4",
         "vite": "^5.0"
