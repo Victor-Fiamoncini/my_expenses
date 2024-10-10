@@ -24,7 +24,7 @@ class SessionController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('dashboard');
+            return redirect()->route('expenses.index');
         }
 
         return back()
@@ -32,13 +32,13 @@ class SessionController extends Controller
             ->onlyInput('email');
     }
 
-    public function destroy(Request $request): View
+    public function destroy(Request $request): RedirectResponse
     {
         Auth::logout();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return view('session.create');
+        return redirect()->route('sessions.create');
     }
 }
