@@ -21,7 +21,7 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
             'email' => 'required|email|unique:users,email',
             'name' => 'required|string|max:255',
-            'password' => 'required|string|min:8|confirmed',
+            'password' => 'required|string|min:12|confirmed',
         ]);
 
         if ($validator->fails()) {
@@ -34,6 +34,9 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('session.create')->with('success', 'Registration successful!');
+        return redirect()->route('sessions.create')->with(
+            'success',
+            "$request->name, your registration was completed!"
+        );
     }
 }
