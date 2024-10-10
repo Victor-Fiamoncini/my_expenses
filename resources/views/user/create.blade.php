@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'My Expenses - Registrar')
+@section('title', ' - Registrar')
 
 @section('content')
     <main id="users-create">
@@ -55,7 +55,7 @@
 
                 <span>
                     Já se registrou?
-                    <a href="{{ route('users.create') }}">Entre aqui</a>
+                    <a href="{{ route('sessions.create') }}">Entre aqui</a>
                 </span>
             </div>
         </form>
