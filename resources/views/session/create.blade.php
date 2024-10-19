@@ -32,6 +32,7 @@
 
                 <span>
                     Ainda não se registrou?
+
                     <a href="{{ route('users.create') }}">Registre-se aqui</a>
                 </span>
             </div>

@@ -55,6 +55,7 @@
 
                 <span>
                     Já se registrou?
+
                     <a href="{{ route('sessions.create') }}">Entre aqui</a>
                 </span>
             </div>
