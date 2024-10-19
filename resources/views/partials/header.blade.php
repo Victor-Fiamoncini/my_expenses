@@ -11,7 +11,7 @@
         <nav class="d-flex gap-2 flex-wrap justify-content-center align-items-center">
             @if (Auth::check())
                 <span class="text-white fw-bold fs-5 text-center">
-                    {{ Auth::user()->name }}
+                    {{ Auth::user()->name }} &nbsp;|
                 </span>
 
                 <form action="{{ route('sessions.destroy') }}" method="POST">
