@@ -6,14 +6,7 @@
         <meta name="theme-color" content="#78c2ad" />
         <meta name="msapplication-navbutton-color" content="#78c2ad" />
         <meta name="apple-mobile-web-app-status-bar-style" content="#78c2ad" />
-
-        <link
-            type="image/png"
-            sizes="96x96"
-            rel="icon"
-            href="{{ Vite::asset('resources/images/favicon.png') }}"
-        />
-
+        <link type="image/png" sizes="96x96" rel="icon" href="{{ asset('images/favicon.png') }}" />
         <title>My Expenses @yield('title', '')</title>
 
         @vite(['resources/css/app.css', 'resources/scss/app.scss', 'resources/js/app.js'])
