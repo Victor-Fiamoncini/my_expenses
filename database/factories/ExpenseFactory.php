@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,10 +18,10 @@ class ExpenseFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'value' => fake()->floatval(),
-            'payment_date' => fake()->date(),
-            'paid' => fake()->boolean()
+            'name' => fake()->word(),
+            'value' => fake()->randomFloat(2, 10, 1000),
+            'payment_date' => fake()->dateTimeBetween('now', '+1 month')->format('Y-m-d'),
+            'paid' => fake()->boolean(),
         ];
     }
 }

@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Expense;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class ExpenseSeeder extends Seeder
 {
@@ -12,6 +14,12 @@ class ExpenseSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $user = User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+            'password' => Hash::make('password12'),
+        ]);
+
+        Expense::factory()->count(15)->create(['user_id' => $user->id]);
     }
 }
