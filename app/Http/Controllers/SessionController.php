@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreSessionRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,12 +15,9 @@ class SessionController extends Controller
         return view('session.create');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(StoreSessionRequest $request): RedirectResponse
     {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
+        $credentials = $request->safe()->only(['email', 'password']);
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
