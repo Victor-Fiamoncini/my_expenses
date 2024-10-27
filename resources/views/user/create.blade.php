@@ -50,7 +50,7 @@
                 />
             </div>
 
-            <div class="d-flex justify-content-between align-items-center gap-4">
+            <div class="d-flex justify-content-between align-items-center gap-2">
                 <button type="submit" class="btn btn-primary">Registrar</button>
 
                 <span>

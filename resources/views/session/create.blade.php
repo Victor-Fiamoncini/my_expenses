@@ -27,7 +27,7 @@
                 <input class="form-control" type="password" name="password" placeholder="Sua senha" />
             </div>
 
-            <div class="d-flex justify-content-between align-items-center gap-4">
+            <div class="d-flex justify-content-between align-items-center gap-2">
                 <button type="submit" class="btn btn-primary">Entrar</button>
 
                 <span>
