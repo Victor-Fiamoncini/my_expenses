@@ -40,7 +40,7 @@
                 <input
                     id="expense-payment-date-input"
                     class="form-control"
-                    type="date"
+                    type="text"
                     name="payment_date"
                     value="{{ old('payment_date') }}"
                     placeholder="A em que irá pagar/quitar"
