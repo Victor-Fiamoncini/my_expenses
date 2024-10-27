@@ -13,6 +13,7 @@
                 <label class="form-label" for="email">Email:</label>
 
                 <input
+                    id="email"
                     class="form-control"
                     type="email"
                     name="email"
@@ -24,7 +25,13 @@
             <div class="mb-5">
                 <label class="form-label" for="password">Senha:</label>
 
-                <input class="form-control" type="password" name="password" placeholder="Sua senha" />
+                <input
+                    id="password"
+                    class="form-control"
+                    type="password"
+                    name="password"
+                    placeholder="Sua senha"
+                />
             </div>
 
             <div class="d-flex justify-content-between align-items-center gap-2">

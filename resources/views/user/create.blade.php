@@ -13,6 +13,7 @@
                 <label class="form-label" for="name">Nome:</label>
 
                 <input
+                    id="name"
                     class="form-control"
                     type="text"
                     name="name"
@@ -25,6 +26,7 @@
                 <label class="form-label" for="email">Email:</label>
 
                 <input
+                    id="email"
                     class="form-control"
                     type="email"
                     name="email"
@@ -36,13 +38,20 @@
             <div class="mb-4">
                 <label class="form-label" for="password">Senha:</label>
 
-                <input class="form-control" type="password" name="password" placeholder="Uma senha forte" />
+                <input
+                    id="password"
+                    class="form-control"
+                    type="password"
+                    name="password"
+                    placeholder="Uma senha forte"
+                />
             </div>
 
             <div class="mb-5">
-                <label class="form-label" for="password_confirmation">Confirme a senha:</label>
+                <label class="form-label" for="password-confirmation">Confirme a senha:</label>
 
                 <input
+                    id="password-confirmation"
                     class="form-control"
                     type="password"
                     name="password_confirmation"

@@ -13,6 +13,7 @@
                 <label class="form-label" for="name">Nome:</label>
 
                 <input
+                    id="name"
                     class="form-control"
                     type="text"
                     name="name"
@@ -22,7 +23,7 @@
             </div>
 
             <div class="mb-4">
-                <label class="form-label" for="value">Valor:</label>
+                <label class="form-label" for="expense-value-input">Valor:</label>
 
                 <input
                     id="expense-value-input"
@@ -35,7 +36,7 @@
             </div>
 
             <div class="mb-5">
-                <label class="form-label" for="payment_date">Data de Pagamento:</label>
+                <label class="form-label" for="expense-payment-date-input">Data de Pagamento:</label>
 
                 <input
                     id="expense-payment-date-input"
