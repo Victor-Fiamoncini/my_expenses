@@ -9,7 +9,7 @@
         </div>
 
         <nav class="d-flex gap-2 flex-wrap justify-content-center align-items-center">
-            @if (Auth::check())
+            @auth
                 <span class="text-white fw-bold fs-5 text-center">
                     {{ Auth::user()->name }} &nbsp;|
                 </span>
@@ -23,7 +23,7 @@
                         Sair
                     </button>
                 </form>
-            @endif
+            @endauth
         </nav>
     </div>
 </header>
