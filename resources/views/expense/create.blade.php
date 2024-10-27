@@ -38,7 +38,7 @@
                 <label class="form-label" for="payment_date">Data de Pagamento:</label>
 
                 <input
-                    id="expense-payment-date-input""
+                    id="expense-payment-date-input"
                     class="form-control"
                     type="date"
                     name="payment_date"
