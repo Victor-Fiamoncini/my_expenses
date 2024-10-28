@@ -62,11 +62,7 @@
                                     Editar
                                 </a>
 
-                                <a
-                                    class="btn btn-small btn-danger text-white"
-                                >
-                                    Apagar
-                                </a>
+                                @include('partials.expense.delete_form', ['expense' => $expense])
                             </td>
                         </tr>
                     @endforeach
