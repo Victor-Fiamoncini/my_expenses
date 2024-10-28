@@ -3,9 +3,10 @@
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UserController;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn() => redirect()->route('sessions.create'));
+Route::get('/', fn(): RedirectResponse => redirect()->route('sessions.create'));
 
 Route::resource('users', UserController::class)->only(['create', 'store']);
 
