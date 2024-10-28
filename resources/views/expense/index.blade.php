@@ -4,6 +4,8 @@
 
 @section('content')
     <main id="expenses-index">
+        @include('partials.messages')
+
         <div class="d-flex justify-content-between align-items-center gap-4 mb-4">
             <a href="{{ route('expenses.create') }}" class="btn btn-small btn-primary text-white">
                 Nova Despesa
