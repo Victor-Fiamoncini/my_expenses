@@ -19,6 +19,7 @@ class Expense extends Model
         'name',
         'value',
         'payment_date',
+        'paid',
         'user_id',
     ];
 
