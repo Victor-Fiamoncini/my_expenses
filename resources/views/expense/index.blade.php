@@ -1,3 +1,7 @@
+@php
+    $formatter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
+@endphp
+
 @extends('layouts.app')
 
 @section('title', ' - Despesas')
@@ -39,9 +43,9 @@
 
                             <td>{{ $expense->name }}</td>
 
-                            <td>{{ $expense->value }}</td>
+                            <td>{{ $formatter->formatCurrency($expense->value, 'BRL') }}</td>
 
-                            <td>{{ $expense->payment_date }}</td>
+                            <td>{{ $expense->payment_date->format('d/m/Y') }}</td>
 
                             <td>
                                 <input
@@ -62,7 +66,7 @@
                                     Editar
                                 </a>
 
-                                @include('partials.expense.delete_form', ['expense' => $expense])
+                                @include('partials.expense.delete_form', compact('expense'))
                             </td>
                         </tr>
                     @endforeach
