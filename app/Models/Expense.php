@@ -10,11 +10,6 @@ class Expense extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'name',
         'value',
@@ -23,9 +18,10 @@ class Expense extends Model
         'user_id',
     ];
 
-    /**
-     * Get the expense user
-     */
+    protected $casts = [
+        'payment_date' => 'datetime'
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
