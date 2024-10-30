@@ -24,7 +24,7 @@ class StoreExpenseRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'value' => 'required|numeric|min:0',
-            'payment_date' => 'required|date'
+            'payment_date' => 'required|date',
         ];
     }
 }

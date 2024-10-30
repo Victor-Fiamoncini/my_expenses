@@ -17,7 +17,7 @@ class ExpenseSeeder extends Seeder
         $user = User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
-            'password' => Hash::make('password1234')
+            'password' => Hash::make('password1234'),
         ]);
 
         Expense::factory()->count(15)->create(['user_id' => $user->id]);

@@ -21,7 +21,7 @@ class UserController extends Controller
 
         User::create([
             'email' => $payload['email'],
-            'name' =>  $payload['name'],
+            'name' => $payload['name'],
             'password' => Hash::make($payload['password']),
         ]);
 
