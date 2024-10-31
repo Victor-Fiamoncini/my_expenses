@@ -72,50 +72,50 @@
                     @endforeach
                 </tbody>
             </table>
+
+            <nav>
+                <ul class="pagination">
+                    @if ($expenses->onFirstPage())
+                        <li class="page-item disabled">
+                            <span class="page-link">&laquo;</span>
+                        </li>
+                    @else
+                        <li class="page-item">
+                            <a class="page-link" href="{{ $expenses->previousPageUrl() }}" rel="prev">
+                                &laquo;
+                            </a>
+                        </li>
+                    @endif
+
+                    @foreach ($expenses->getUrlRange(1, $expenses->lastPage()) as $page => $url)
+                        @if ($page === $expenses->currentPage())
+                            <li class="page-item active">
+                                <span class="page-link">{{ $page }}</span>
+                            </li>
+                        @else
+                            <li class="page-item">
+                                <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                            </li>
+                        @endif
+                    @endforeach
+
+                    @if ($expenses->hasMorePages())
+                        <li class="page-item">
+                            <a class="page-link" href="{{ $expenses->nextPageUrl() }}" rel="next">
+                                &raquo;
+                            </a>
+                        </li>
+                    @else
+                        <li class="page-item disabled">
+                            <span class="page-link">&raquo;</span>
+                        </li>
+                    @endif
+                </ul>
+            </nav>
         @else
             <div class="alert alert-light fs-4 text-center">
                 Não há despesas registradas até o momento
             </div>
         @endif
-
-        <nav>
-            <ul class="pagination">
-                @if ($expenses->onFirstPage())
-                    <li class="page-item disabled">
-                        <span class="page-link">&laquo;</span>
-                    </li>
-                @else
-                    <li class="page-item">
-                        <a class="page-link" href="{{ $expenses->previousPageUrl() }}" rel="prev">
-                            &laquo;
-                        </a>
-                    </li>
-                @endif
-
-                @foreach ($expenses->getUrlRange(1, $expenses->lastPage()) as $page => $url)
-                    @if ($page === $expenses->currentPage())
-                        <li class="page-item active">
-                            <span class="page-link">{{ $page }}</span>
-                        </li>
-                    @else
-                        <li class="page-item">
-                            <a class="page-link" href="{{ $url }}">{{ $page }}</a>
-                        </li>
-                    @endif
-                @endforeach
-
-                @if ($expenses->hasMorePages())
-                    <li class="page-item">
-                        <a class="page-link" href="{{ $expenses->nextPageUrl() }}" rel="next">
-                            &raquo;
-                        </a>
-                    </li>
-                @else
-                    <li class="page-item disabled">
-                        <span class="page-link">&raquo;</span>
-                    </li>
-                @endif
-            </ul>
-        </nav>
     </main>
 @endsection
