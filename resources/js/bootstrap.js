@@ -1,6 +1,7 @@
 import axios from 'axios'
 import Cleave from 'cleave.js'
 import flatpickr from 'flatpickr'
+import IMask from 'imask'
 
 window.axios = axios
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
@@ -24,16 +25,13 @@ const convertFromNumericToMonetary = value => {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const input = document.getElementById('expense-value-input')
+    const expenseValueInput = document.getElementById('value')
+    const phoneInput = document.getElementById('phone')
 
-    if (!input) return
+    if (expenseValueInput) {
+        expenseValueInput.value = convertFromNumericToMonetary(expenseValueInput.value)
 
-    const form = input.closest('form')
-
-    if (input && form) {
-        input.value = convertFromNumericToMonetary(input.value)
-
-        new Cleave(input, {
+        new Cleave(expenseValueInput, {
             numeral: true,
             numeralThousandsGroupStyle: 'thousand',
             numeralDecimalMark: ',',
@@ -44,12 +42,28 @@ document.addEventListener('DOMContentLoaded', () => {
             numeralDecimalScale: 2,
         })
 
-        form.addEventListener('submit', () => {
-            input.value = convertFromMonetaryToNumeric(input.value)
-        })
+        const expenseForm = expenseValueInput.closest('form')
+
+        if (expenseForm) {
+            expenseForm.addEventListener('submit', () => {
+                expenseValueInput.value = convertFromMonetaryToNumeric(expenseValueInput.value)
+            })
+        }
     }
 
-    flatpickr('input[id=expense-payment-date-input]', {
+    if (phoneInput) {
+        const phoneMask = IMask(phoneInput, { mask: [{ mask: '(00) 0000-0000' }, { mask: '(00) 00000-0000' }] })
+
+        const userForm = phoneInput.closest('form')
+
+        if (userForm) {
+            userForm.addEventListener('submit', () => {
+                phoneInput.value = phoneMask.unmaskedValue
+            })
+        }
+    }
+
+    flatpickr('input[id=payment-date]', {
         dateFormat: 'Y-m-d',
         altInput: true,
         altFormat: 'd/m/Y',
