@@ -17,6 +17,7 @@
         "eslint": "^9.13.0",
         "flatpickr": "^4.6.13",
         "globals": "^15.11.0",
+        "imask": "^7.6.1",
         "laravel-vite-plugin": "^1.0",
         "prettier": "^3.3.3",
         "sass": "^1.79.4",
