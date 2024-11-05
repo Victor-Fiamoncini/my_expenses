@@ -36,6 +36,19 @@
             </div>
 
             <div class="mb-4">
+                <label class="form-label" for="phone">Telefone/Celular:</label>
+
+                <input
+                    id="phone"
+                    class="form-control"
+                    type="text"
+                    name="phone"
+                    value="{{ old('phone') }}"
+                    placeholder="Seu melhor número para contato"
+                />
+            </div>
+
+            <div class="mb-4">
                 <label class="form-label" for="password">Senha:</label>
 
                 <input
@@ -48,7 +61,7 @@
             </div>
 
             <div class="mb-5">
-                <label class="form-label" for="password-confirmation">Confirme a senha:</label>
+                <label class="form-label" for="password-confirmation">Confirmação a senha:</label>
 
                 <input
                     id="password-confirmation"
