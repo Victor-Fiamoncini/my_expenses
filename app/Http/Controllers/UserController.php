@@ -17,12 +17,13 @@ class UserController extends Controller
 
     public function store(StoreUserRequest $request): RedirectResponse
     {
-        $payload = $request->safe()->only(['email', 'name', 'password']);
+        $payload = $request->safe()->only(['email', 'name', 'password', 'phone']);
 
         User::create([
             'email' => $payload['email'],
             'name' => $payload['name'],
             'password' => Hash::make($payload['password']),
+            'phone' => $payload['phone'],
         ]);
 
         return redirect()
