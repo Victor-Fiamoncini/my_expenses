@@ -1,0 +1,40 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0" version="24.8.4">
+  <diagram name="Page-1" id="XczBNNJqNktpGx1_EaTg">
+    <mxGraphModel dx="1209" dy="709" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="qV1d2z53x30eWTZOLCTx-1" value="&lt;div&gt;&lt;font style=&quot;font-size: 19px;&quot;&gt;Expense&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="40" y="300" width="220" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="qV1d2z53x30eWTZOLCTx-3" value="&lt;font style=&quot;font-size: 19px;&quot;&gt;Periodic Billing&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="40" y="550" width="220" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="qV1d2z53x30eWTZOLCTx-4" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;" parent="1" source="qV1d2z53x30eWTZOLCTx-1" target="qV1d2z53x30eWTZOLCTx-3" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="158" y="470" as="sourcePoint" />
+            <mxPoint x="450" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qV1d2z53x30eWTZOLCTx-5" value="&lt;div&gt;&lt;font style=&quot;font-size: 19px;&quot;&gt;User&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="40" y="40" width="220" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="qV1d2z53x30eWTZOLCTx-6" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;" parent="1" source="qV1d2z53x30eWTZOLCTx-5" target="qV1d2z53x30eWTZOLCTx-1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="228" y="388" as="sourcePoint" />
+            <mxPoint x="315" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qV1d2z53x30eWTZOLCTx-8" value="&lt;p style=&quot;line-height: 120%;&quot;&gt;&lt;/p&gt;&lt;div style=&quot;font-size: 14px;&quot; align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Expenses have at the moment two types:&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 14px;&quot; align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;- Single: which will only generate one billing;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 14px;&quot; align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;- Monthly: which will generate a periodic billing each month.&lt;/font&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="290" y="315" width="390" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="qV1d2z53x30eWTZOLCTx-9" value="&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Users can create multiple expenses choosing their values, billing dates, periodicity, etc&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="280" y="85" width="560" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qV1d2z53x30eWTZOLCTx-10" value="&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;When a Single expense is created, a billing will be generated at the moment.&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;When a Monthly expense is created, the first billing will be generated at the moment&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;and the next ones will be generated at the begining of the next month.&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="280" y="580" width="550" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
