@@ -29,7 +29,7 @@ class ExpenseController extends Controller
 
     public function store(StoreExpenseRequest $request): RedirectResponse
     {
-        $payload = $request->safe()->only(['name', 'value', 'payment_date']);
+        $payload = $request->safe()->only(['name', 'value', 'payment_date', 'type']);
 
         $expense = new Expense([...$payload, 'user_id' => Auth::id()]);
         $expense->save();
