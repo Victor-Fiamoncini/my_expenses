@@ -48,21 +48,13 @@
                             <td>{{ $expense->payment_date->format('d/m/Y') }}</td>
 
                             <td>
-                                <input
-                                    class="form-check-input"
-                                    type="checkbox"
-                                    disabled
-                                    @if ($expense->paid)
-                                        checked
-                                    @endif
-                                />
+                                <input class="form-check-input" type="checkbox" disabled
+                                    @if ($expense->paid) checked @endif />
                             </td>
 
-                             <td class="text-end">
-                                <a
-                                    href="{{ route('expenses.edit', $expense->id) }}"
-                                    class="btn btn-small btn-warning text-white"
-                                >
+                            <td class="text-end">
+                                <a href="{{ route('expenses.edit', $expense->id) }}"
+                                    class="btn btn-small btn-warning text-white">
                                     Editar
                                 </a>
 
