@@ -25,9 +25,9 @@ class Expense extends Model
 {
     use HasFactory;
 
-    const MONTHLY = 'MONTHLY';
+    public const MONTHLY = 'MONTHLY';
 
-    const SINGLE = 'SINGLE';
+    public const SINGLE = 'SINGLE';
 
     /**
      * The attributes that are mass assignable.

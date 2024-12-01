@@ -10,7 +10,8 @@ use Tests\TestCase;
 
 class ExpenseTest extends TestCase
 {
-    use RefreshDatabase, WithFaker;
+    use RefreshDatabase;
+    use WithFaker;
 
     public function test_it_creates_an_expense(): void
     {
