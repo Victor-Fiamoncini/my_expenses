@@ -65,6 +65,8 @@ class User extends Authenticatable
 
     /**
      * Gets user expenses
+     *
+     * @return HasMany
      */
     public function expenses(): HasMany
     {

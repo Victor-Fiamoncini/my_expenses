@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 
 /**
@@ -20,6 +22,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property-read User $user
+ * @property-read Collection|ExpenseInstallment[] $installments
  */
 class Expense extends Model
 {
@@ -54,6 +57,8 @@ class Expense extends Model
 
     /**
      * Gets expense user
+     *
+     * @return BelongsTo
      */
     public function user(): BelongsTo
     {
@@ -61,7 +66,19 @@ class Expense extends Model
     }
 
     /**
+     * Gets expense installments
+     *
+     * @return HasMany
+     */
+    public function installments(): HasMany
+    {
+        return $this->hasMany(ExpenseInstallment::class);
+    }
+
+    /**
      * Returns true if expense is monthly
+     *
+     * @return bool
      */
     public function isMonthly(): bool
     {
@@ -70,6 +87,8 @@ class Expense extends Model
 
     /**
      * Returns true if expense is single
+     *
+     * @return bool
      */
     public function isSingle(): bool
     {
