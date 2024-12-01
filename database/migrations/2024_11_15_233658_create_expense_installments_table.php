@@ -14,10 +14,10 @@ return new class () extends Migration {
             $table->id();
             $table->float('value')->nullable(false);
             $table->boolean('paid')->default(false);
+            $table->timestamps();
             $table->foreignId('expense_id')
                 ->constrained('expenses')
                 ->onDelete('cascade');
-            $table->timestamps();
         });
     }
 

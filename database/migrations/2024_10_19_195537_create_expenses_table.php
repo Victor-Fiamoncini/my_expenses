@@ -15,11 +15,17 @@ return new class () extends Migration {
             $table->string('name', 150)->nullable(false);
             $table->float('value')->nullable(false);
             $table->date('payment_date')->nullable(false);
+            $table->enum('type', ['IN_INSTALLMENTS', 'SINGLE'])
+                ->nullable(false)
+                ->default('SINGLE');
+            $table->integer('number_of_installments')
+                ->nullable(false)
+                ->min(0);
             $table->boolean('paid')->default(false);
+            $table->timestamps();
             $table->foreignId('user_id')
                 ->constrained('users')
                 ->onDelete('cascade');
-            $table->timestamps();
         });
     }
 

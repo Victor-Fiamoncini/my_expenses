@@ -20,6 +20,8 @@ class ExpenseFactory extends Factory
             'name' => fake()->word(),
             'value' => fake()->randomFloat(2, 10, 1000),
             'payment_date' => fake()->dateTimeBetween('now', '+1 month')->format('Y-m-d'),
+            'type' => fake()->randomElement(['IN_INSTALLMENTS', 'SINGLE']),
+            'number_of_installments' => fake()->randomNumber(1, true),
             'paid' => fake()->boolean(),
         ];
     }
