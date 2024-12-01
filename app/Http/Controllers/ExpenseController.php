@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreExpenseRequest;
 use App\Http\Requests\UpdateExpenseRequest;
 use App\Models\Expense;
+use App\Models\ExpenseBilling;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -34,7 +35,16 @@ class ExpenseController extends Controller
         $expense = new Expense([...$payload, 'user_id' => Auth::id()]);
         $expense->save();
 
-        return redirect()->route('expenses.index')->with('success', "Expense {$payload['name']} has been created");
+        if ($payload['type'] === Expense::SINGLE) {
+            $billing = new ExpenseBilling(['value' => $payload['value'], 'expense_id' => $expense->id]);
+            $billing->save();
+        } else {
+            dd('TODO create billing installments');
+        }
+
+        return redirect()
+            ->route('expenses.index')
+            ->with('success', "Expense {$payload['name']} has been created");
     }
 
     public function edit(Expense $expense): View
