@@ -10,11 +10,13 @@ return new class () extends Migration {
      */
     public function up(): void
     {
-        Schema::create('expense_billings', function (Blueprint $table) {
+        Schema::create('expense_installments', function (Blueprint $table) {
             $table->id();
             $table->float('value')->nullable(false);
             $table->boolean('paid')->default(false);
-            $table->foreignId('expense_id')->constrained()->onDelete('cascade');
+            $table->foreignId('expense_id')
+                ->constrained('expenses')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class () extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('expense_billings');
+        Schema::dropIfExists('expense_installments');
     }
 };

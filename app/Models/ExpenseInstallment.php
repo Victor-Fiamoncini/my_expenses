@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
 
 /**
- * Class ExpenseBilling
+ * Class ExpenseInstallment
  *
  * @property int $id
  * @property float $value
@@ -18,7 +18,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon $updated_at
  * @property-read Expense $expense
  */
-class ExpenseBilling extends Model
+class ExpenseInstallment extends Model
 {
     use HasFactory;
 
@@ -34,7 +34,9 @@ class ExpenseBilling extends Model
     ];
 
     /**
-     * Gets billing expense
+     * Gets installment expense
+     *
+     * @return BelongsTo
      */
     public function expense(): BelongsTo
     {

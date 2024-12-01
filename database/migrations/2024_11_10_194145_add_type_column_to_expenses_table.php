@@ -11,7 +11,10 @@ return new class () extends Migration {
     public function up(): void
     {
         Schema::table('expenses', function (Blueprint $table) {
-            $table->enum('type', ['MONTHLY', 'SINGLE'])->nullable()->default('SINGLE')->after('user_id');
+            $table->enum('type', ['MONTHLY', 'SINGLE'])
+                ->nullable()
+                ->default('SINGLE')
+                ->after('user_id');
         });
     }
 
