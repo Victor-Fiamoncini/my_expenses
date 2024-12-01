@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Carbon;
 
 /**
  * Class Expense
@@ -12,15 +13,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $id
  * @property string $name
  * @property float $value
- * @property string $payment_date
- * @property string $paid
+ * @property Carbon $payment_date
+ * @property bool $paid
  * @property string $type
- * @property string $user_id
- * @property string $created_at
- * @property string $updated_at
- * @property-read \App\Models\User $user
- *
- * @mixin \Eloquent
+ * @property int $user_id
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
+ * @property-read User $user
  */
 class Expense extends Model
 {
@@ -30,6 +29,11 @@ class Expense extends Model
 
     const SINGLE = 'SINGLE';
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'name',
         'value',
@@ -39,20 +43,34 @@ class Expense extends Model
         'user_id',
     ];
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
     protected $casts = [
         'payment_date' => 'datetime',
     ];
 
+    /**
+     * Gets expense user
+     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * Returns true if expense is monthly
+     */
     public function isMonthly(): bool
     {
         return $this->type === Expense::MONTHLY;
     }
 
+    /**
+     * Returns true if expense is single
+     */
     public function isSingle(): bool
     {
         return $this->type === Expense::SINGLE;
