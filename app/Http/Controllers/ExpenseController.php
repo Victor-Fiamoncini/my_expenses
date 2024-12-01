@@ -46,24 +46,29 @@ class ExpenseController extends Controller
      */
     public function store(StoreExpenseRequest $request): RedirectResponse
     {
-        $payload = $request->safe()->only(['name', 'value', 'payment_date', 'type']);
+        $payload = $request->safe()->only([
+            'name',
+            'value',
+            'payment_date',
+            'number_of_installments',
+            'type',
+        ]);
 
         $expense = new Expense([...$payload, 'user_id' => Auth::id()]);
         $expense->save();
 
-        if ($payload['type'] === Expense::SINGLE) {
-            $installment = new ExpenseInstallment([
-                'value' => $payload['value'],
-                'expense_id' => $expense->id,
-            ]);
-            $installment->save();
-
-            return redirect()
-                ->route('expenses.index')
-                ->with('success', "Expense {$payload['name']} has been created");
+        if ($payload['type'] === Expense::IN_INSTALLMENTS) {
+            for ($i = 0; $i < $payload['number_of_installments']; $i++) {
+                ExpenseInstallment::create([
+                    'paid' => false,
+                    'value' => $expense->value,
+                    'expense_id' => $expense->id,
+                ]);
+            }
         }
 
-        dd('TODO create billing installments');
+        return redirect()->route('expenses.index')
+            ->with('success', "Expense {$payload['name']} has been created");
     }
 
     /**
@@ -93,7 +98,8 @@ class ExpenseController extends Controller
 
         $expense->update($payload);
 
-        return redirect()->route('expenses.index')->with('success', "Expense {$payload['name']} has been updated");
+        return redirect()->route('expenses.index')
+            ->with('success', "Expense {$payload['name']} has been updated");
     }
 
     /**
@@ -108,6 +114,7 @@ class ExpenseController extends Controller
 
         $expense->delete();
 
-        return redirect()->route('expenses.index')->with('success', "Expense $expense->name has been deleted");
+        return redirect()->route('expenses.index')
+            ->with('success', "Expense $expense->name has been deleted");
     }
 }

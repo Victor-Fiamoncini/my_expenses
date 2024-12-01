@@ -11,8 +11,7 @@ class Expense extends Model
 {
     use HasFactory;
 
-    public const MONTHLY = 'MONTHLY';
-
+    public const IN_INSTALLMENTS = 'IN_INSTALLMENTS';
     public const SINGLE = 'SINGLE';
 
     /**
@@ -24,8 +23,9 @@ class Expense extends Model
         'name',
         'value',
         'payment_date',
-        'paid',
         'type',
+        'number_of_installments',
+        'paid',
         'user_id',
     ];
 
@@ -59,13 +59,13 @@ class Expense extends Model
     }
 
     /**
-     * Returns true if expense is monthly
+     * Returns true if expense is in installments
      *
      * @return bool
      */
-    public function isMonthly(): bool
+    public function isInInstallments(): bool
     {
-        return $this->type === Expense::MONTHLY;
+        return $this->type === Expense::IN_INSTALLMENTS;
     }
 
     /**

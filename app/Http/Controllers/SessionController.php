@@ -28,9 +28,9 @@ class SessionController extends Controller
      */
     public function store(StoreSessionRequest $request): RedirectResponse
     {
-        $credentials = $request->safe()->only(['email', 'password']);
+        $payload = $request->safe()->only(['email', 'password']);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($payload)) {
             $request->session()->regenerate();
 
             return redirect()->route('expenses.index');

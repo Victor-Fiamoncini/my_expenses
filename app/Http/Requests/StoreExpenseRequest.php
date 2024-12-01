@@ -25,7 +25,8 @@ class StoreExpenseRequest extends FormRequest
             'name' => 'required|string|max:255',
             'value' => 'required|numeric|min:0',
             'payment_date' => 'required|date',
-            'type' => 'required|in:MONTHLY,SINGLE',
+            'type' => 'required|in:IN_INSTALLMENTS,SINGLE',
+            'number_of_installments' => 'required|numeric|min:0',
         ];
     }
 }
