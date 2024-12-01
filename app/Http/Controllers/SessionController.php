@@ -10,11 +10,22 @@ use Illuminate\View\View;
 
 class SessionController extends Controller
 {
+    /**
+     * Renders session.create view
+     *
+     * @return View
+     */
     public function create(): View
     {
         return view('session.create');
     }
 
+    /**
+     * Stores a session
+     *
+     * @param StoreSessionRequest $request
+     * @return RedirectResponse
+     */
     public function store(StoreSessionRequest $request): RedirectResponse
     {
         $credentials = $request->safe()->only(['email', 'password']);
@@ -30,6 +41,12 @@ class SessionController extends Controller
             ->onlyInput('email');
     }
 
+    /**
+     * Deletes a session
+     *
+     * @param Request $request
+     * @return RedirectResponse
+     */
     public function destroy(Request $request): RedirectResponse
     {
         Auth::logout();

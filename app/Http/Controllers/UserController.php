@@ -10,11 +10,22 @@ use Illuminate\View\View;
 
 class UserController extends Controller
 {
+    /**
+     * Renders user.create view
+     *
+     * @return View
+     */
     public function create(): View
     {
         return view('user.create');
     }
 
+    /**
+     * Stores an user
+     *
+     * @param StoreUserRequest $request
+     * @return RedirectResponse
+     */
     public function store(StoreUserRequest $request): RedirectResponse
     {
         $payload = $request->safe()->only(['email', 'name', 'password', 'phone']);

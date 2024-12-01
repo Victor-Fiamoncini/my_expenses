@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreExpenseRequest;
 use App\Http\Requests\UpdateExpenseRequest;
 use App\Models\Expense;
-use App\Models\ExpenseBilling;
+use App\Models\ExpenseInstallment;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -13,6 +13,11 @@ use Illuminate\View\View;
 
 class ExpenseController extends Controller
 {
+    /**
+     * Renders expense.index view with paginated user expenses
+     *
+     * @return View
+     */
     public function index(): View
     {
         $expenses = Expense::query()
@@ -23,11 +28,22 @@ class ExpenseController extends Controller
         return view('expense.index', compact('expenses'));
     }
 
+    /**
+     * Renders expense.create view
+     *
+     * @return View
+     */
     public function create(): View
     {
         return view('expense.create');
     }
 
+    /**
+     * Stores a new expense
+     *
+     * @param StoreExpenseRequest $request
+     * @return RedirectResponse
+     */
     public function store(StoreExpenseRequest $request): RedirectResponse
     {
         $payload = $request->safe()->only(['name', 'value', 'payment_date', 'type']);
@@ -36,17 +52,25 @@ class ExpenseController extends Controller
         $expense->save();
 
         if ($payload['type'] === Expense::SINGLE) {
-            $billing = new ExpenseBilling(['value' => $payload['value'], 'expense_id' => $expense->id]);
-            $billing->save();
-        } else {
-            dd('TODO create billing installments');
+            $installment = new ExpenseInstallment([
+                'value' => $payload['value'],
+                'expense_id' => $expense->id,
+            ]);
+            $installment->save();
+
+            return redirect()
+                ->route('expenses.index')
+                ->with('success', "Expense {$payload['name']} has been created");
         }
 
-        return redirect()
-            ->route('expenses.index')
-            ->with('success', "Expense {$payload['name']} has been created");
+        dd('TODO create billing installments');
     }
 
+    /**
+     * Renders expense.edit view
+     *
+     * @return View
+     */
     public function edit(Expense $expense): View
     {
         Gate::authorize('view', $expense);
@@ -54,6 +78,13 @@ class ExpenseController extends Controller
         return view('expense.edit', compact('expense'));
     }
 
+    /**
+     * Update an expense
+     *
+     * @param UpdateExpenseRequest $request
+     * @param Expense $expense
+     * @return RedirectResponse
+     */
     public function update(UpdateExpenseRequest $request, Expense $expense): RedirectResponse
     {
         Gate::authorize('update', $expense);
@@ -65,6 +96,12 @@ class ExpenseController extends Controller
         return redirect()->route('expenses.index')->with('success', "Expense {$payload['name']} has been updated");
     }
 
+    /**
+     * Deletes an expense
+     *
+     * @param Expense $expense
+     * @return RedirectResponse
+     */
     public function destroy(Expense $expense): RedirectResponse
     {
         Gate::authorize('delete', $expense);
