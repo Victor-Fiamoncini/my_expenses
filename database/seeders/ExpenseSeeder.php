@@ -20,6 +20,6 @@ class ExpenseSeeder extends Seeder
             'password' => Hash::make('password1234'),
         ]);
 
-        Expense::factory()->count(15)->create(['user_id' => $user->id]);
+        Expense::factory()->count(2)->create(['user_id' => $user->id]);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Expense;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,12 +17,14 @@ class ExpenseFactory extends Factory
      */
     public function definition(): array
     {
+        $numberOfInstallments = fake()->randomNumber(1, true);
+
         return [
             'name' => fake()->word(),
             'value' => fake()->randomFloat(2, 10, 1000),
             'payment_date' => fake()->dateTimeBetween('now', '+1 month')->format('Y-m-d'),
-            'type' => fake()->randomElement(['IN_INSTALLMENTS', 'SINGLE']),
-            'number_of_installments' => fake()->randomNumber(1, true),
+            'type' => $numberOfInstallments > 1 ? Expense::IN_INSTALLMENTS : Expense::SINGLE,
+            'number_of_installments' => $numberOfInstallments,
             'paid' => fake()->boolean(),
         ];
     }
