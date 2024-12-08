@@ -1,55 +1,118 @@
-@extends('layouts.app')
+@extends("layouts.app")
 
-@section('title', ' - Registrar')
+@section("title", " - Registrar")
 
-@section('content')
+@section("content")
     <main id="users-create">
-        @include('partials.errors')
+        @include("partials.errors")
 
-        <form class="bg-light p-4 border rounded" action="{{ route('users.store') }}" method="POST">
+        <form
+            class="bg-light rounded border p-4"
+            action="{{ route("users.store") }}"
+            method="POST"
+        >
             @csrf
 
             <div class="mb-4">
-                <label class="form-label" for="name">Nome:</label>
+                <label
+                    class="form-label"
+                    for="name"
+                >
+                    Nome:
+                </label>
 
-                <input id="name" class="form-control" type="text" name="name" value="{{ old('name') }}"
-                    placeholder="Seu nome" />
+                <input
+                    id="name"
+                    class="form-control"
+                    type="text"
+                    name="name"
+                    value="{{ old("name") }}"
+                    placeholder="Seu nome"
+                />
             </div>
 
             <div class="mb-4">
-                <label class="form-label" for="email">Email:</label>
+                <label
+                    class="form-label"
+                    for="email"
+                >
+                    Email:
+                </label>
 
-                <input id="email" class="form-control" type="email" name="email" value="{{ old('email') }}"
-                    placeholder="Seu melhor email" />
+                <input
+                    id="email"
+                    class="form-control"
+                    type="email"
+                    name="email"
+                    value="{{ old("email") }}"
+                    placeholder="Seu melhor email"
+                />
             </div>
 
             <div class="mb-4">
-                <label class="form-label" for="phone">Telefone/Celular:</label>
+                <label
+                    class="form-label"
+                    for="phone"
+                >
+                    Telefone/Celular:
+                </label>
 
-                <input id="phone" class="form-control" type="text" name="phone" value="{{ old('phone') }}"
-                    placeholder="Seu melhor número para contato" />
+                <input
+                    id="phone"
+                    class="form-control"
+                    type="text"
+                    name="phone"
+                    value="{{ old("phone") }}"
+                    placeholder="Seu melhor número para contato"
+                />
             </div>
 
             <div class="mb-4">
-                <label class="form-label" for="password">Senha:</label>
+                <label
+                    class="form-label"
+                    for="password"
+                >
+                    Senha:
+                </label>
 
-                <input id="password" class="form-control" type="password" name="password" placeholder="Uma senha forte" />
+                <input
+                    id="password"
+                    class="form-control"
+                    type="password"
+                    name="password"
+                    placeholder="Uma senha forte"
+                />
             </div>
 
             <div class="mb-5">
-                <label class="form-label" for="password-confirmation">Confirmação a senha:</label>
+                <label
+                    class="form-label"
+                    for="password-confirmation"
+                >
+                    Confirmação a senha:
+                </label>
 
-                <input id="password-confirmation" class="form-control" type="password" name="password_confirmation"
-                    placeholder="Confirme a senha" />
+                <input
+                    id="password-confirmation"
+                    class="form-control"
+                    type="password"
+                    name="password_confirmation"
+                    placeholder="Confirme a senha"
+                />
             </div>
 
             <div class="d-flex justify-content-between align-items-center gap-2">
-                <button type="submit" class="btn btn-primary">Registrar</button>
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    Registrar
+                </button>
 
                 <span>
                     Já se registrou?
 
-                    <a href="{{ route('sessions.create') }}">Entre aqui</a>
+                    <a href="{{ route("sessions.create") }}">Entre aqui</a>
                 </span>
             </div>
         </form>

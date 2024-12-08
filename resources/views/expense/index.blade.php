@@ -1,23 +1,26 @@
 @php
-    $formatter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
+    $formatter = new \NumberFormatter("pt_BR", \NumberFormatter::CURRENCY);
 @endphp
 
-@extends('layouts.app')
+@extends("layouts.app")
 
-@section('title', ' - Despesas')
+@section("title", " - Despesas")
 
-@section('content')
+@section("content")
     <main id="expenses-index">
-        @include('partials.messages')
+        @include("partials.messages")
 
-        <div class="d-flex justify-content-between align-items-center gap-4 mb-4">
-            <a href="{{ route('expenses.create') }}" class="btn btn-small btn-primary text-white">
+        <div class="d-flex justify-content-between align-items-center mb-4 gap-4">
+            <a
+                href="{{ route("expenses.create") }}"
+                class="btn btn-small btn-primary text-white"
+            >
                 Nova Despesa
             </a>
         </div>
 
         @if (count($expenses))
-            <table class="table table-striped table-hover align-middle">
+            <table class="table-striped table-hover table align-middle">
                 <caption>Suas despesas</caption>
 
                 <thead class="table-light">
@@ -32,7 +35,12 @@
 
                         <th scope="col">Está Pago</th>
 
-                        <th scope="col" class="text-end">Ações</th>
+                        <th
+                            scope="col"
+                            class="text-end"
+                        >
+                            Ações
+                        </th>
                     </tr>
                 </thead>
 
@@ -43,22 +51,28 @@
 
                             <td>{{ $expense->name }}</td>
 
-                            <td>{{ $formatter->formatCurrency($expense->value, 'BRL') }}</td>
+                            <td>{{ $formatter->formatCurrency($expense->value, "BRL") }}</td>
 
-                            <td>{{ $expense->payment_date->format('d/m/Y') }}</td>
+                            <td>{{ $expense->payment_date->format("d/m/Y") }}</td>
 
                             <td>
-                                <input class="form-check-input" type="checkbox" disabled
-                                    @if ($expense->paid) checked @endif />
+                                <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    disabled
+                                    @if ($expense->paid) checked @endif
+                                />
                             </td>
 
                             <td class="text-end">
-                                <a href="{{ route('expenses.edit', $expense->id) }}"
-                                    class="btn btn-small btn-warning text-white">
+                                <a
+                                    href="{{ route("expenses.edit", $expense->id) }}"
+                                    class="btn btn-small btn-warning text-white"
+                                >
                                     Editar
                                 </a>
 
-                                @include('partials.expense.delete_form', compact('expense'))
+                                @include("partials.expense.delete_form", compact("expense"))
                             </td>
                         </tr>
                     @endforeach
@@ -73,7 +87,11 @@
                         </li>
                     @else
                         <li class="page-item">
-                            <a class="page-link" href="{{ $expenses->previousPageUrl() }}" rel="prev">
+                            <a
+                                class="page-link"
+                                href="{{ $expenses->previousPageUrl() }}"
+                                rel="prev"
+                            >
                                 &laquo;
                             </a>
                         </li>
@@ -86,14 +104,23 @@
                             </li>
                         @else
                             <li class="page-item">
-                                <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                                <a
+                                    class="page-link"
+                                    href="{{ $url }}"
+                                >
+                                    {{ $page }}
+                                </a>
                             </li>
                         @endif
                     @endforeach
 
                     @if ($expenses->hasMorePages())
                         <li class="page-item">
-                            <a class="page-link" href="{{ $expenses->nextPageUrl() }}" rel="next">
+                            <a
+                                class="page-link"
+                                href="{{ $expenses->nextPageUrl() }}"
+                                rel="next"
+                            >
                                 &raquo;
                             </a>
                         </li>

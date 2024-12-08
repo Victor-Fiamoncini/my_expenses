@@ -1,13 +1,16 @@
 {
     "indentSize": 4,
-    "wrapAttributes": "auto",
+    "wrapAttributes": "force-expand-multiline",
+    "wrapLineLength": 120,
     "wrapAttributesMinAttrs": 2,
-    "wrapLineLength": 80,
+    "indentInnerHtml": true,
     "endWithNewLine": true,
-    "noMultipleEmptyLines": false,
+    "endOfLine": "LF",
     "useTabs": false,
     "sortTailwindcssClasses": true,
-    "sortHtmlAttributes": "code-guide",
+    "sortHtmlAttributes": "none",
+    "noMultipleEmptyLines": false,
     "noPhpSyntaxCheck": false,
-    "noSingleQuote": true
+    "noSingleQuote": true,
+    "noTrailingCommaPhp": false
 }
