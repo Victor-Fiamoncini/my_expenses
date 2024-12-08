@@ -73,7 +73,8 @@ class ExpenseController extends Controller
             }
         }
 
-        return redirect()->route('expenses.index')
+        return redirect()
+            ->route('expenses.index')
             ->with('success', "Expense {$payload['name']} has been created");
     }
 
@@ -104,7 +105,8 @@ class ExpenseController extends Controller
 
         $expense->update($payload);
 
-        return redirect()->route('expenses.index')
+        return redirect()
+            ->route('expenses.index')
             ->with('success', "Expense {$payload['name']} has been updated");
     }
 
@@ -120,7 +122,8 @@ class ExpenseController extends Controller
 
         $expense->delete();
 
-        return redirect()->route('expenses.index')
+        return redirect()
+            ->route('expenses.index')
             ->with('success', "Expense $expense->name has been deleted");
     }
 }

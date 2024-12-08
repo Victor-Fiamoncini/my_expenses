@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\ExpenseInstallmentController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\RedirectResponse;
@@ -16,4 +17,9 @@ Route::middleware('auth')->group(function (): void {
     Route::delete('/sessions', [SessionController::class, 'destroy'])->name('sessions.destroy');
 
     Route::resource('expenses', ExpenseController::class)->except(['show']);
+
+    Route::resource('expense-installments', ExpenseInstallmentController::class)->only([
+        'index',
+        'update',
+    ]);
 });
