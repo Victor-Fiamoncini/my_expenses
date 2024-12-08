@@ -25,7 +25,7 @@ class UpdateExpenseRequest extends FormRequest
             'name' => 'required|string|max:255',
             'value' => 'required|numeric|min:0',
             'payment_date' => 'required|date',
-            'paid' => 'boolean',
+            'paid' => 'nullable|boolean',
         ];
     }
 }

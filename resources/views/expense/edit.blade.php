@@ -14,40 +14,42 @@
             @csrf
             @method("PUT")
 
-            <div class="mb-4">
-                <label
-                    class="form-label"
-                    for="name"
-                >
-                    Nome:
-                </label>
+            <div class="row">
+                <div class="col mb-4">
+                    <label
+                        class="form-label"
+                        for="name"
+                    >
+                        Nome:
+                    </label>
 
-                <input
-                    id="name"
-                    class="form-control"
-                    type="text"
-                    name="name"
-                    value="{{ old("name", $expense->name) }}"
-                    placeholder="Um nova que tenha relação com a despesa"
-                />
-            </div>
+                    <input
+                        id="name"
+                        class="form-control"
+                        type="text"
+                        name="name"
+                        value="{{ old("name", $expense->name) }}"
+                        placeholder="Um nova que tenha relação com a despesa"
+                    />
+                </div>
 
-            <div class="mb-4">
-                <label
-                    class="form-label"
-                    for="value"
-                >
-                    Valor:
-                </label>
+                <div class="col mb-4">
+                    <label
+                        class="form-label"
+                        for="value"
+                    >
+                        Valor:
+                    </label>
 
-                <input
-                    id="value"
-                    class="form-control"
-                    type="text"
-                    name="value"
-                    value="{{ old("value", $expense->value) }}"
-                    placeholder="Um valor numérico"
-                />
+                    <input
+                        id="value"
+                        class="form-control"
+                        type="text"
+                        name="value"
+                        value="{{ old("value", $expense->value) }}"
+                        placeholder="Um valor numérico"
+                    />
+                </div>
             </div>
 
             <div class="mb-4">
