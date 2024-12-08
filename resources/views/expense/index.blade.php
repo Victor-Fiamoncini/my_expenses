@@ -33,6 +33,8 @@
 
                         <th scope="col">Data de Pagamento</th>
 
+                        <th scope="col">Parcelas</th>
+
                         <th scope="col">Está Pago</th>
 
                         <th
@@ -54,6 +56,14 @@
                             <td>{{ $formatter->formatCurrency($expense->value, "BRL") }}</td>
 
                             <td>{{ $expense->payment_date->format("d/m/Y") }}</td>
+
+                            <td>
+                                @if ($expense->number_of_installments === 1)
+                                    Avulsa
+                                @else
+                                    {{ $expense->number_of_installments }}x
+                                @endif
+                            </td>
 
                             <td>
                                 <input
