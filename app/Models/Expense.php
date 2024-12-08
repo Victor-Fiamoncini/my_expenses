@@ -55,7 +55,7 @@ class Expense extends Model
      */
     public function installments(): HasMany
     {
-        return $this->hasMany(ExpenseInstallment::class);
+        return $this->hasMany(Installment::class);
     }
 
     /**
