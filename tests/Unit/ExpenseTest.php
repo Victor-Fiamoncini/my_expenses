@@ -17,13 +17,15 @@ class ExpenseTest extends TestCase
     {
         $name = $this->faker()->name();
         $paymentDate = $this->faker()->dateTime();
-        $type = $this->faker()->randomElement(['MONTHLY', 'SINGLE']);
+        $numberOfInstallments = $this->faker()->randomNumber(1, true);
+        $type = $numberOfInstallments ? Expense::IN_INSTALLMENTS : Expense::SINGLE;
         $userId = User::factory()->create()->id;
         $value = $this->faker->randomFloat(2);
 
         $expense = new Expense([
             'name' => $name,
             'payment_date' => $paymentDate,
+            'number_of_installments' => $numberOfInstallments,
             'type' => $type,
             'user_id' => $userId,
             'value' => $value,

@@ -19,7 +19,7 @@ class ExpenseTest extends TestCase
 
         $name = $this->faker()->name();
         $paymentDate = (string) $this->faker()->dateTime()->format('Y-m-d');
-        $type = $this->faker()->randomElement(['MONTHLY', 'SINGLE']);
+        $numberOfInstallments = $this->faker()->randomNumber(1, true);
         $value = $this->faker->randomFloat(2);
 
         $response = $this->actingAs($user)->post(
@@ -27,7 +27,7 @@ class ExpenseTest extends TestCase
             data: [
                 'name' => $name,
                 'payment_date' => $paymentDate,
-                'type' => $type,
+                'number_of_installments' => $numberOfInstallments,
                 'value' => $value,
             ]
         );
