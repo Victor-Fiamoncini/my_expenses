@@ -51,13 +51,19 @@ class ExpenseController extends Controller
             'value',
             'payment_date',
             'number_of_installments',
-            'type',
         ]);
 
-        $expense = new Expense([...$payload, 'user_id' => Auth::id()]);
-        $expense->save();
+        $type = $payload['number_of_installments'] > 1 ?
+            Expense::IN_INSTALLMENTS :
+            Expense::SINGLE;
 
-        if ($payload['type'] === Expense::IN_INSTALLMENTS) {
+        $expense = Expense::create([
+            ...$payload,
+            'type' => $type,
+            'user_id' => Auth::id(),
+        ]);
+
+        if ($type === Expense::IN_INSTALLMENTS) {
             for ($i = 0; $i < $payload['number_of_installments']; $i++) {
                 ExpenseInstallment::create([
                     'paid' => false,

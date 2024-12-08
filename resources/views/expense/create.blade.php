@@ -13,101 +13,90 @@
         >
             @csrf
 
-            <div class="mb-4">
-                <label
-                    class="form-label"
-                    for="name"
-                >
-                    Nome:
-                </label>
-
-                <input
-                    id="name"
-                    class="form-control"
-                    type="text"
-                    name="name"
-                    value="{{ old("name") }}"
-                    placeholder="Um nova que tenha relação com a despesa"
-                />
-            </div>
-
-            <div class="mb-4">
-                <label
-                    class="form-label"
-                    for="value"
-                >
-                    Valor:
-                </label>
-
-                <input
-                    id="value"
-                    class="form-control"
-                    type="text"
-                    name="value"
-                    value="{{ old("value") }}"
-                    placeholder="Um valor numérico"
-                />
-            </div>
-
-            <div class="mb-4">
-                <label
-                    class="form-label"
-                    for="payment-date"
-                >
-                    Data de pagamento:
-                </label>
-
-                <input
-                    id="payment-date"
-                    class="form-control"
-                    type="text"
-                    name="payment_date"
-                    value="{{ old("payment_date") }}"
-                    placeholder="Quando irá pagar/quitar"
-                />
-            </div>
-
-            <div class="mb-5">
-                <p>Essa despesa será paga de forma:</p>
-
-                <div
-                    class="btn-group"
-                    role="group"
-                    aria-label="Expense Type Group"
-                >
-                    <input
-                        id="type-single"
-                        class="btn-check"
-                        name="type"
-                        type="radio"
-                        autocomplete="off"
-                        value="SINGLE"
-                        @if (old("type") === "SINGLE" || old("type") === null) checked @endif
-                    />
-
+            <div class="row">
+                <div class="col mb-4">
                     <label
-                        class="btn btn-sm btn-outline-primary"
-                        for="type-single"
+                        class="form-label"
+                        for="name"
                     >
-                        Avulsa
+                        Nome:
                     </label>
 
                     <input
-                        id="type-monthly"
-                        class="btn-check"
-                        name="type"
-                        type="radio"
-                        autocomplete="off"
-                        value="MONTHLY"
-                        @if (old("type") === "MONTHLY") checked @endif
+                        id="name"
+                        class="form-control"
+                        type="text"
+                        name="name"
+                        value="{{ old("name") }}"
+                        placeholder="Um nova que tenha relação com a despesa"
                     />
+                </div>
 
+                <div class="col mb-4">
                     <label
-                        class="btn btn-sm btn-outline-primary"
-                        for="type-monthly"
+                        class="form-label"
+                        for="value"
                     >
-                        Mensal
+                        Valor:
                     </label>
+
+                    <input
+                        id="value"
+                        class="form-control"
+                        type="text"
+                        name="value"
+                        value="{{ old("value") }}"
+                        placeholder="Um valor numérico"
+                    />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col mb-5">
+                    <label
+                        class="form-label"
+                        for="payment-date"
+                    >
+                        Data de Pagamento:
+                    </label>
+
+                    <input
+                        id="payment-date"
+                        class="form-control"
+                        type="text"
+                        name="payment_date"
+                        value="{{ old("payment_date") }}"
+                        placeholder="Quando irá pagar/quitar"
+                    />
+                </div>
+
+                <div class="col mb-5">
+                    <label
+                        class="form-label"
+                        for="number-of-installments"
+                    >
+                        Número de Parcelas:
+                    </label>
+
+                    <select
+                        id="number-of-installments"
+                        class="form-select"
+                        name="number_of_installments"
+                        aria-label="Number of installments select"
+                    >
+                        <option value="1">1x (Avulsa)</option>
+                        <option value="2">2x</option>
+                        <option value="3">3x</option>
+                        <option value="4">4x</option>
+                        <option value="5">5x</option>
+                        <option value="6">6x</option>
+                        <option value="7">7x</option>
+                        <option value="8">8x</option>
+                        <option value="9">9x</option>
+                        <option value="10">10x</option>
+                        <option value="11">11x</option>
+                        <option value="12">12x</option>
+                    </select>
                 </div>
             </div>
 
