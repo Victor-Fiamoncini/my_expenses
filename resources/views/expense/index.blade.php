@@ -75,6 +75,15 @@
                             </td>
 
                             <td class="text-end">
+                                @if ($expense->number_of_installments > 1)
+                                    <a
+                                        href="{{ route("expenses.installments.index", $expense->id) }}"
+                                        class="btn btn-small btn-info text-white"
+                                    >
+                                        Parcelas
+                                    </a>
+                                @endif
+
                                 <a
                                     href="{{ route("expenses.edit", $expense->id) }}"
                                     class="btn btn-small btn-warning text-white"
