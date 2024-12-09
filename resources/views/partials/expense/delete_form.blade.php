@@ -4,7 +4,6 @@
     method="POST"
 >
     @csrf
-
     @method("DELETE")
 
     <button

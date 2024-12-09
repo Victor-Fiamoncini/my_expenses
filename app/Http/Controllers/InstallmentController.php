@@ -18,7 +18,7 @@ class InstallmentController extends Controller
     public function index(Expense $expense): View
     {
         $installments = $expense->installments;
-        dd($installments);
+
         return view('installment.index', compact('expense', 'installments'));
     }
 
