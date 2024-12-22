@@ -33,6 +33,13 @@ class InstallmentController extends Controller
         $installment->paid = true;
         $installment->save();
 
+        $allPaid = $expense->installments->every(fn ($installment) => $installment->is_paid);
+
+        if (!$allPaid) {
+            $expense->paid = true;
+            $expense->save();
+        }
+
         return redirect()
             ->route('expenses.installments.index', compact('expense'))
             ->with('success', "Installment has been paid");

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreExpenseRequest;
 use App\Http\Requests\UpdateExpenseRequest;
 use App\Models\Expense;
-use App\Models\ExpenseInstallment;
+use App\Models\Installment;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -64,10 +64,12 @@ class ExpenseController extends Controller
         ]);
 
         if ($type === Expense::IN_INSTALLMENTS) {
+            $installmentValue = $payload['value'] / $payload['number_of_installments'];
+
             for ($i = 0; $i < $payload['number_of_installments']; $i++) {
-                ExpenseInstallment::create([
+                Installment::create([
                     'paid' => false,
-                    'value' => $expense->value,
+                    'value' => $installmentValue,
                     'expense_id' => $expense->id,
                 ]);
             }
