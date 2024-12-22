@@ -33,9 +33,9 @@ class InstallmentController extends Controller
         $installment->paid = true;
         $installment->save();
 
-        $allPaid = $expense->installments->every(fn ($installment) => $installment->is_paid);
+        $allPaid = $expense->installments->every(fn ($installment) => $installment->paid);
 
-        if (!$allPaid) {
+        if ($allPaid) {
             $expense->paid = true;
             $expense->save();
         }
