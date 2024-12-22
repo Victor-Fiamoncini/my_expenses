@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UpdateInstallmentRequest;
 use App\Models\Expense;
 use App\Models\Installment;
 use Illuminate\Http\RedirectResponse;
@@ -17,7 +16,7 @@ class InstallmentController extends Controller
      */
     public function index(Expense $expense): View
     {
-        $installments = $expense->installments;
+        $installments = $expense->installments()->orderBy('id')->get();
 
         return view('installment.index', compact('expense', 'installments'));
     }
@@ -25,19 +24,17 @@ class InstallmentController extends Controller
     /**
      * Update an expense installment
      *
-     * @param UpdateInstallmentRequest $request
+     * @param Expense $expense
      * @param Installment $installment
      * @return RedirectResponse
      */
-    public function update(UpdateInstallmentRequest $request, Installment $installment): RedirectResponse
+    public function update(Expense $expense, Installment $installment): RedirectResponse
     {
-        $paid = $request->safe()->input('paid');
-
-        $installment->paid = $paid;
+        $installment->paid = true;
         $installment->save();
 
         return redirect()
-            ->route('expenses.installments.index')
-            ->with('success', "Installment has been updated");
+            ->route('expenses.installments.index', compact('expense'))
+            ->with('success', "Installment has been paid");
     }
 }
