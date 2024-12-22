@@ -52,7 +52,7 @@
             </div>
 
             <div class="row">
-                <div class="col mb-5">
+                <div class="col mb-4">
                     <label
                         class="form-label"
                         for="payment-date"
@@ -70,7 +70,7 @@
                     />
                 </div>
 
-                <div class="col mb-5">
+                <div class="col mb-4">
                     <label
                         class="form-label"
                         for="number-of-installments"

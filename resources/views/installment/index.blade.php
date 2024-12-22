@@ -1,7 +1,3 @@
-@php
-    $formatter = new \NumberFormatter("pt_BR", \NumberFormatter::CURRENCY);
-@endphp
-
 @extends("layouts.app")
 
 @section("title", " - Parcelas de $expense->name")
@@ -10,32 +6,21 @@
     <main id="installments-index">
         @include("partials.messages")
 
-        <div class="d-flex justify-content-between align-items-center mb-4 gap-4">
-            <a
-                href="{{ route("expenses.index") }}"
-                class="btn btn-small btn-secondary text-white"
-            >
-                Voltar
-            </a>
-        </div>
+        <section class="bg-light w-50 m-auto rounded border p-4">
+            <ul class="w-100 d-flex flex-column mb-3 p-0">
+                @foreach ($installments as $installment)
+                    @include("partials.installment.update_form", compact("expense", "installment"))
+                @endforeach
+            </ul>
 
-        <ul class="list-group">
-            @foreach ($installments as $index => $installment)
+            <div class="d-flex justify-content-start align-items-center">
                 <a
-                    href="#"
-                    class="list-group-item d-flex align-items-center"
+                    href="{{ route("expenses.index") }}"
+                    class="btn btn-secondary text-white"
                 >
-                    <div>
-                        <span class="fw-bold">{{ $index + 1 }}x</span>
-
-                        <span>{{ $installment->value }}</span>
-                    </div>
-
-                    @if (!$installment->paid)
-                        @include("partials.installment.update_form", compact("expense", "installment"))
-                    @endif
+                    Voltar
                 </a>
-            @endforeach
-        </ul>
+            </div>
+        </section>
     </main>
 @endsection

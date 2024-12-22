@@ -1,16 +1,31 @@
+@php
+    $formatter = new \NumberFormatter("pt_BR", \NumberFormatter::CURRENCY);
+    $formattedValue = $formatter->formatCurrency($expense->value, "BRL");
+@endphp
+
 <form
-    class="d-inline justify-self-end"
+    class="w-100 mb-2"
     action="{{ route("expenses.installments.update", compact("expense", "installment")) }}"
     method="POST"
 >
     @csrf
     @method("PUT")
 
-    <button
-        class="btn btn-small btn-success text-white"
-        type="submit"
-        onclick="return confirm('Tem certeza de que deseja pagar esta despesa?')"
-    >
-        Pagar
-    </button>
+    @if ($installment->paid)
+        <button
+            class="w-100 btn btn-small btn-success text-white"
+            type="button"
+            disabled
+        >
+            Pago - <span>{{ $formattedValue }}</span>
+        </button>
+    @else
+        <button
+            class="w-100 btn btn-small btn-danger text-white"
+            type="submit"
+            onclick="return confirm('Deseja pagar esta despesa de {{ $formattedValue }}?')"
+        >
+            Pagar - <span>{{ $formattedValue }}</span>
+        </button>
+    @endif
 </form>

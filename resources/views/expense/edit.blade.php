@@ -70,7 +70,7 @@
                 />
             </div>
 
-            <div class="form-check mb-5">
+            <div class="form-check mb-4">
                 <input
                     type="hidden"
                     name="paid"
