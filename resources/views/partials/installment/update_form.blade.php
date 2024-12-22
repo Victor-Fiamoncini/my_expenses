@@ -1,6 +1,6 @@
 @php
     $formatter = new \NumberFormatter("pt_BR", \NumberFormatter::CURRENCY);
-    $formattedValue = $formatter->formatCurrency($expense->value, "BRL");
+    $formattedValue = $formatter->formatCurrency($installment->value, "BRL");
 @endphp
 
 <form
