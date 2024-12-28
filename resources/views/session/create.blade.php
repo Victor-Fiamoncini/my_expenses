@@ -51,7 +51,7 @@
             <div class="d-flex justify-content-between align-items-center gap-2">
                 <button
                     type="submit"
-                    class="btn btn-primary"
+                    class="btn btn-success"
                 >
                     Entrar
                 </button>

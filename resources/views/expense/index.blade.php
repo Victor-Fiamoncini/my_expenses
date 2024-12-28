@@ -13,7 +13,7 @@
         <div class="d-flex justify-content-between align-items-center mb-4 gap-4">
             <a
                 href="{{ route("expenses.create") }}"
-                class="btn btn-small btn-primary text-white"
+                class="btn btn-small btn-success text-white"
             >
                 Nova Despesa
             </a>
@@ -66,12 +66,16 @@
                             </td>
 
                             <td>
-                                <input
-                                    class="form-check-input"
-                                    type="checkbox"
-                                    disabled
-                                    @if ($expense->paid) checked @endif
-                                />
+                                @if ($expense->paid)
+                                    <input
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        checked
+                                        disabled
+                                    />
+                                @else
+                                    <span>-</span>
+                                @endif
                             </td>
 
                             <td class="text-end">
