@@ -1,23 +1,16 @@
 @extends("layouts.app")
 
-@section("title", " - Registrar")
+@section("title", "Registrar")
 
 @section("content")
     <main id="users-create">
         @include("partials.errors")
 
-        <form
-            class="bg-light rounded border p-4"
-            action="{{ route("users.store") }}"
-            method="POST"
-        >
+        <form class="bg-light rounded border p-4" action="{{ route("users.store") }}" method="POST">
             @csrf
 
-            <div class="mb-4">
-                <label
-                    class="form-label"
-                    for="name"
-                >
+            <div class="mb-2">
+                <label class="form-label" for="name">
                     Nome:
                 </label>
 
@@ -31,11 +24,8 @@
                 />
             </div>
 
-            <div class="mb-4">
-                <label
-                    class="form-label"
-                    for="email"
-                >
+            <div class="mb-2">
+                <label class="form-label" for="email">
                     Email:
                 </label>
 
@@ -49,11 +39,8 @@
                 />
             </div>
 
-            <div class="mb-4">
-                <label
-                    class="form-label"
-                    for="phone"
-                >
+            <div class="mb-2">
+                <label class="form-label" for="phone">
                     Telefone/Celular:
                 </label>
 
@@ -67,11 +54,8 @@
                 />
             </div>
 
-            <div class="mb-4">
-                <label
-                    class="form-label"
-                    for="password"
-                >
+            <div class="mb-2">
+                <label class="form-label" for="password">
                     Senha:
                 </label>
 
@@ -85,10 +69,7 @@
             </div>
 
             <div class="mb-4">
-                <label
-                    class="form-label"
-                    for="password-confirmation"
-                >
+                <label class="form-label" for="password-confirmation">
                     Confirmação a senha:
                 </label>
 
@@ -101,11 +82,8 @@
                 />
             </div>
 
-            <div class="d-flex justify-content-between align-items-center gap-2">
-                <button
-                    type="submit"
-                    class="btn btn-success"
-                >
+            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-4 flex-wrap">
+                <button type="submit" class="btn btn-success">
                     Registrar
                 </button>
 

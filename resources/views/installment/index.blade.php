@@ -1,6 +1,6 @@
 @extends("layouts.app")
 
-@section("title", " - Parcelas de $expense->name")
+@section("title", "Parcelas de $expense->name")
 
 @section("content")
     <main id="installments-index">

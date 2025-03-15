@@ -1,6 +1,6 @@
 @extends("layouts.app")
 
-@section("title", " - Nova Despesa")
+@section("title", "Nova Despesa")
 
 @section("content")
     <main id="expenses-create">
@@ -13,12 +13,9 @@
         >
             @csrf
 
-            <div class="row">
-                <div class="col mb-4">
-                    <label
-                        class="form-label"
-                        for="name"
-                    >
+            <div class="row mb-2 g-2">
+                <div class="col-12 col-md-6">
+                    <label class="form-label" for="name">
                         Nome:
                     </label>
 
@@ -32,11 +29,8 @@
                     />
                 </div>
 
-                <div class="col mb-4">
-                    <label
-                        class="form-label"
-                        for="value"
-                    >
+                <div class="col-12 col-md-6">
+                    <label class="form-label" for="value">
                         Valor:
                     </label>
 
@@ -51,12 +45,9 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col mb-4">
-                    <label
-                        class="form-label"
-                        for="payment-date"
-                    >
+            <div class="row g-2 mb-4">
+                <div class="col-12 col-md-6">
+                    <label class="form-label" for="payment-date">
                         Data de Pagamento:
                     </label>
 
@@ -70,11 +61,8 @@
                     />
                 </div>
 
-                <div class="col mb-4">
-                    <label
-                        class="form-label"
-                        for="number-of-installments"
-                    >
+                <div class="col-12 col-md-6">
+                    <label class="form-label" for="number-of-installments">
                         Número de Parcelas:
                     </label>
 
@@ -84,34 +72,19 @@
                         name="number_of_installments"
                         aria-label="Number of installments select"
                     >
-                        <option value="1">1x (Avulsa)</option>
-                        <option value="2">2x</option>
-                        <option value="3">3x</option>
-                        <option value="4">4x</option>
-                        <option value="5">5x</option>
-                        <option value="6">6x</option>
-                        <option value="7">7x</option>
-                        <option value="8">8x</option>
-                        <option value="9">9x</option>
-                        <option value="10">10x</option>
-                        <option value="11">11x</option>
-                        <option value="12">12x</option>
+                        @for ($i = 1; $i <= 12; $i++)
+                            <option value="{{ $i }}">{{ $i }}x {{ $i === 1 ? '(Avulsa)' : '' }}</option>
+                        @endfor
                     </select>
                 </div>
             </div>
 
             <div class="d-flex justify-content-start align-items-center gap-2">
-                <button
-                    type="submit"
-                    class="btn btn-success"
-                >
+                <button type="submit" class="btn btn-success">
                     Cadastrar
                 </button>
 
-                <a
-                    href="{{ route("expenses.index") }}"
-                    class="btn btn-secondary text-white"
-                >
+                <a href="{{ route("expenses.index") }}" class="btn btn-secondary text-white">
                     Voltar
                 </a>
             </div>

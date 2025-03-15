@@ -1,6 +1,6 @@
 @extends("layouts.app")
 
-@section("title", " - Editar $expense->name")
+@section("title", "Editar $expense->name")
 
 @section("content")
     <main id="expenses-update">
@@ -14,12 +14,9 @@
             @csrf
             @method("PUT")
 
-            <div class="row">
-                <div class="col mb-4">
-                    <label
-                        class="form-label"
-                        for="name"
-                    >
+            <div class="row g-2 mb-2">
+                <div class="col-12 col-md-6">
+                    <label class="form-label" for="name">
                         Nome:
                     </label>
 
@@ -33,11 +30,8 @@
                     />
                 </div>
 
-                <div class="col mb-4">
-                    <label
-                        class="form-label"
-                        for="value"
-                    >
+                <div class="col-12 col-md-6">
+                    <label class="form-label" for="value">
                         Valor:
                     </label>
 
@@ -52,11 +46,8 @@
                 </div>
             </div>
 
-            <div class="mb-4">
-                <label
-                    class="form-label"
-                    for="payment-date"
-                >
+            <div class="mb-2">
+                <label class="form-label" for="payment-date">
                     Data de Pagamento:
                 </label>
 
@@ -66,16 +57,12 @@
                     type="text"
                     name="payment_date"
                     value="{{ old("payment_date", $expense->payment_date) }}"
-                    placeholder="A em que irá pagar/quitar"
+                    placeholder="A data em que irá pagar/quitar"
                 />
             </div>
 
             <div class="form-check mb-4">
-                <input
-                    type="hidden"
-                    name="paid"
-                    value="0"
-                />
+                <input type="hidden" name="paid" value="0" />
 
                 <input
                     id="paid"
@@ -86,29 +73,21 @@
                     {{ old("paid", $expense->paid) ? "checked" : "" }}
                 />
 
-                <label
-                    class="form-label"
-                    for="paid"
-                >
+                <label class="form-check-label" for="paid">
                     Está Pago
                 </label>
             </div>
 
             <div class="d-flex justify-content-start align-items-center gap-2">
-                <button
-                    type="submit"
-                    class="btn btn-success"
-                >
+                <button type="submit" class="btn btn-success">
                     Atualizar
                 </button>
 
-                <a
-                    href="{{ route("expenses.index") }}"
-                    class="btn btn-secondary text-white"
-                >
+                <a href="{{ route("expenses.index") }}" class="btn btn-secondary text-white">
                     Voltar
                 </a>
             </div>
         </form>
     </main>
 @endsection
+

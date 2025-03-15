@@ -1,6 +1,6 @@
 @extends("layouts.app")
 
-@section("title", " - Entrar")
+@section("title", "Entrar")
 
 @section("content")
     <main id="sessions-create">
@@ -13,11 +13,8 @@
         >
             @csrf
 
-            <div class="mb-4">
-                <label
-                    class="form-label"
-                    for="email"
-                >
+            <div class="mb-2">
+                <label class="form-label" for="email">
                     Email:
                 </label>
 
@@ -32,10 +29,7 @@
             </div>
 
             <div class="mb-4">
-                <label
-                    class="form-label"
-                    for="password"
-                >
+                <label class="form-label" for="password">
                     Senha:
                 </label>
 
@@ -48,11 +42,8 @@
                 />
             </div>
 
-            <div class="d-flex justify-content-between align-items-center gap-2">
-                <button
-                    type="submit"
-                    class="btn btn-success"
-                >
+            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-4 flex-wrap">
+                <button type="submit" class="btn btn-success">
                     Entrar
                 </button>
 
