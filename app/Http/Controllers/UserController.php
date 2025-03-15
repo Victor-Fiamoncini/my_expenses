@@ -21,7 +21,7 @@ class UserController extends Controller
     }
 
     /**
-     * Stores an user
+     * Stores a user
      *
      * @param StoreUserRequest $request
      * @return RedirectResponse

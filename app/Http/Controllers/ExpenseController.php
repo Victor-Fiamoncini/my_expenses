@@ -83,6 +83,7 @@ class ExpenseController extends Controller
     /**
      * Renders expense.edit view
      *
+     * @param Expense $expense
      * @return View
      */
     public function edit(Expense $expense): View

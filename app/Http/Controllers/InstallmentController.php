@@ -12,6 +12,7 @@ class InstallmentController extends Controller
     /**
      * Renders installment.index view
      *
+     * @param Expense $expense
      * @return View
      */
     public function index(Expense $expense): View

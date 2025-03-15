@@ -2,17 +2,37 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 
+/**
+ * App\Models\Expense
+ *
+ * @property int                          $id
+ * @property string                       $name
+ * @property float                        $value
+ * @property Carbon                       $payment_date
+ * @property string                       $type
+ * @property int                          $number_of_installments
+ * @property bool                         $paid
+ * @property Carbon|null                  $created_at
+ * @property Carbon|null                  $updated_at
+ * @property int                          $user_id
+ * @property User                         $user
+ * @property Collection<int, Installment> $installments
+ *
+ * @method static create(array $array)
+ */
 class Expense extends Model
 {
     use HasFactory;
 
-    public const IN_INSTALLMENTS = 'IN_INSTALLMENTS';
-    public const SINGLE = 'SINGLE';
+    public const string IN_INSTALLMENTS = 'IN_INSTALLMENTS';
+    public const string SINGLE = 'SINGLE';
 
     /**
      * The attributes that are mass assignable.
